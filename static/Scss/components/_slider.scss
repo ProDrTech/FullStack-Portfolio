@@ -1,0 +1,60 @@
+@import "../abstract/mixins";
+@import "../abstract/variables";
+
+.slider_component {
+  border: {
+    top: 1px solid #1c1c21;
+    bottom: 1px solid #1c1c21;
+  }
+  padding: 16px 0;
+  background-color: #0e0e10;
+  overflow: hidden;
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+    li {
+      flex-shrink: 0;
+      a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #d6d0fb;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: uppercase;
+
+        span {
+          flex-shrink: 0;
+        }
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.newsticker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+@include media-largeLaptop {
+  .slider_component {
+    padding: 20px 0;
+    ul {
+      li {
+        a {
+          gap: 10px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

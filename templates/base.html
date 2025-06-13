@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    {% block 'title' %}{% endblock %}
+  </title>
+
+  <!-- Tavsif -->
+  <meta name="description"
+    content="Explore the dark-themed photography portfolio of Asadbek Odilov. Capturing moments with artistic precision – portraits, nature, events and more." />
+
+  <!-- Kalit so‘zlar -->
+  <meta name="keywords"
+    content="photography, photographer portfolio, dark theme, photo gallery, nature photos, portrait photography, event photography" />
+
+  <!-- Muallif -->
+  <meta name="author" content="Asadbek Odilov" />
+
+  <!-- Kodlash -->
+  <meta charset="UTF-8" />
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="https://i.postimg.cc/Qx1kP2W4/favicon.png" type="image/x-icon" />
+
+  <!-- Responsive dizayn -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Open Graph (Facebook va boshqalar uchun) -->
+  <meta property="og:title" content="Dark Theme Photography Portfolio" />
+  <meta property="og:description"
+    content="Discover a visually striking, dark-themed photography portfolio featuring portraits, landscapes, and more." />
+  <meta property="og:image" content="https://i.postimg.cc/CLj4R3Jy/Rectangle-6330.png" />
+  <meta property="og:url" content="https://photographer-portfolio-292v.onrender.com/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Asadbek Odilov Photography Portfolio" />
+  <meta name="twitter:description" content="A dark-themed gallery of professional photography." />
+  <meta name="twitter:image" content="https://i.postimg.cc/CLj4R3Jy/Rectangle-6330.png" />
+  <!--  
+        Links
+    -->
+  <!-- Google Fonts (Manrope) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+
+  <!-- Style css link -->
+  <link rel="stylesheet" href="{% static 'Css/style.css' %}" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header container">
+    <a class="header_anchor" href="{% url 'app:index' %}">
+      <img src="{% static 'Images/Logo.svg' %}" alt="Logo" />
+    </a>
+
+    <nav class="header_nav">
+      <ul>
+        <li><a href="{% url 'app:index' %}" class="active">Home</a></li>
+        <li><a href="#">About Me</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    {% if request.user.is_authenticated %}
+    <div user>
+      <div class="header_user" id="userToggle">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          {% if request.user.profile_pic %}
+          <img src="{{ request.user.profile_pic.url }}" alt="user_img" style="background-color: white;">
+          {% else %}
+          <img src="/media/profile_images/default.webp" alt="default_user_img" style="background-color: white;">
+          {% endif %}
+          <span>{{request.user.username}}</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true" focusable="false">
+          <path d="M13 6L8 11L3 6" stroke="#BABEC3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          </path>
+        </svg>
+      </div>
+
+      <!-- Dropdown menu -->
+      <ul class="dropdown_menu hidden" id="userDropdown">
+        <li><a href="{% url 'app:settings' %}">Sozlamalar</a></li>
+        <li><a href="{% url 'app:logout' %}">Chiqish</a></li>
+      </ul>
+    </div>
+    {% else %}
+    <div class="header_div">
+      <a href="{% url 'app:login' %}" class="btn-border">
+        <span class="btn">Login Page</span>
+      </a>
+    </div>
+    {% endif %}
+
+    <a href="#" class="header_gumburger">
+      <img src="{% static 'Images/Gumburger_btn.svg' %}" alt="Gumburger" />
+    </a>
+  </header>
+  <div class="br"></div>
+  <!-- HEADER -->
+
+  <!-- MAIN -->
+  <main>
+    {% block 'content' %}{% endblock %}
+  </main>
+  <!-- MAIN -->
+
+  <!-- SCRIPT -->
+  <script src="{% static 'Js/jquery.min.js' %}"></script>
+  <script src="{% static 'Js/jquery.li-scroller.1.0.js'%}"></script>
+  <script src="{% static 'Js/script.js' %}"></script>
+  <!-- SCRIPT -->
+</body>
+
+</html>

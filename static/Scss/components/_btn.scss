@@ -1,0 +1,39 @@
+@import "../abstract/mixins";
+@import "../abstract/variables";
+
+.btn-border {
+  display: inline-block;
+  padding: 1px; /* border qalinligi */
+  border-radius: 8px;
+  background: linear-gradient(
+    to right,
+    rgba(47, 47, 55, 1) 28%,
+    rgba(47, 47, 55, 0) 100%
+  );
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  background-color: #1c1c21;
+  border-radius: 7.5px; 
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+@include media-compactLaptop {
+  .btn {
+    padding: 12px 14px;
+  }
+}
+
+@include media-largeLaptop {
+  .btn {
+    padding: 16px 24px;
+    font-size: 18px;
+  }
+}

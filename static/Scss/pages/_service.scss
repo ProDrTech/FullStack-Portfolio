@@ -1,0 +1,486 @@
+@import "../abstract/mixins";
+@import "../abstract/variables";
+
+.service {
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 80px 0 0;
+
+    [heading] {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #1C1C21;
+
+        [text] {
+            text-transform: uppercase;
+
+            span {
+                font-size: 14px;
+                color: #797C86;
+                font-weight: 600;
+            }
+
+            h4 {
+                color: #fff;
+                font-size: 28px;
+                font-weight: 600;
+            }
+        }
+
+        [button] {
+            [arrows] {
+                display: none;
+            }
+        }
+
+    }
+
+    [main] {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        svg {
+            width: 100%;
+        }
+
+        [largePhone],
+        [compactTablet],
+        [mediumTablet],
+        [compactLaptop],
+        [mediumLaptop],
+        [largeLaptop] {
+            display: none;
+        }
+
+        [content] {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            [first] {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                // border: 1px solid red;
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    span {
+                        font-size: 28px;
+                        color: #797C86;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #797C86;
+                    font-weight: 400;
+                }
+            }
+
+            [second] {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                span {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #CACACE;
+                }
+
+                [flex] {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    div {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        padding: 14px;
+                        border-radius: 8px;
+                        border: 1px solid #1C1C21;
+
+                        p {
+                            text-transform: uppercase;
+                            color: #AFB0B6;
+                            font-size: 14px;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    [wrapper] {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+
+        [div] {
+            transition: transform 0.6s ease;
+            width: 100%;
+            flex-shrink: 0;
+        }
+    }
+
+    [wrapper]~[arrows] {
+        width: max-content;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid #1C1C21;
+        background-color: #070708;
+        border-radius: 100px;
+        padding: 8px;
+    }
+}
+
+@include media-largePhone {
+    .service {
+        [main] {
+
+            [default],
+            [compactTablet],
+            [mediumTablet],
+            [compactLaptop],
+            [mediumLaptop],
+            [largeLaptop] {
+                display: none;
+            }
+
+            [largePhone] {
+                display: block;
+            }
+        }
+    }
+}
+
+@include media-compactTablet {
+    .service {
+        [heading] {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            [text] {
+                span {
+                    font-size: 15px;
+                }
+
+                h4 {
+                    font-size: 30px;
+                }
+            }
+
+            [button] {
+                [arrows] {
+                    width: max-content;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    border: 1px solid #1C1C21;
+                    background-color: #070708;
+                    border-radius: 100px;
+                    padding: 8px;
+                }
+            }
+
+        }
+
+        [main] {
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 20px;
+
+            svg {
+                flex-shrink: 0;
+                width: max-content;
+            }
+
+            [largePhone],
+            [mediumTablet],
+            [compactLaptop],
+            [mediumLaptop],
+            [largeLaptop] {
+                display: none;
+            }
+
+            [compactTablet] {
+                display: block;
+            }
+
+            [content] {
+                gap: 40px;
+
+                [first] {
+                    gap: 16px;
+
+                    div {
+                        gap: 10px;
+
+                        span {
+                            font-size: 34px;
+                        }
+                    }
+
+                    p {
+                        font-size: 16px;
+                    }
+                }
+
+                [second] {
+                    gap: 16px;
+
+                    span {
+                        font-size: 16px;
+                    }
+
+                    [flex] {
+                        gap: 10px;
+
+                        div {
+                            gap: 10px;
+                            padding: 16px;
+
+                            p {
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            [content]~[arrows] {
+                display: none;
+            }
+        }
+
+        &_div {
+            display: none;
+        }
+
+        [wrapper]~[arrows]  {
+            display: none;
+        }
+    }
+}
+
+@include media-mediumTablet {
+    .service {
+        [heading] {
+            [button] {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+
+        [main] {
+
+            [largePhone],
+            [compactTablet],
+            [compactLaptop],
+            [mediumLaptop],
+            [largeLaptop] {
+                display: none;
+            }
+
+            [mediumTablet] {
+                display: block;
+            }
+        }
+
+        &_div {
+            display: block;
+        }
+    }
+}
+
+@include media-compactLaptop {
+    .service {
+        [main] {
+
+            [largePhone],
+            [compactTablet],
+            [mediumTablet],
+            [mediumLaptop],
+            [largeLaptop] {
+                display: none;
+            }
+
+            [compactLaptop] {
+                display: block;
+            }
+        }
+
+        &_div {
+            display: block;
+        }
+    }
+}
+
+@include media-mediumLaptop {
+    .service {
+        [main] {
+            gap: 40px;
+
+            [largePhone],
+            [compactTablet],
+            [mediumTablet],
+            [compactLaptop],
+            [largeLaptop] {
+                display: none;
+            }
+
+            [mediumLaptop] {
+                display: block;
+            }
+        }
+    }
+}
+
+@include media-largeLaptop {
+    .service {
+        padding: 200px 0 0;
+        gap: 80px;
+
+        [heading] {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 50px;
+
+            [text] {
+                span {
+                    font-size: 20px;
+                }
+
+                h4 {
+                    font-size: 58px;
+                }
+            }
+
+            [button] {
+                [arrows] {
+                    width: max-content;
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    border: 1px solid #1C1C21;
+                    background-color: #070708;
+                    border-radius: 100px;
+                    padding: 10px;
+
+                    .arrow_btn {
+                        padding: 14px;
+
+                        img {
+                            width: 34px;
+                            height: 34px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        [main] {
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 50px;
+
+            svg {
+                flex-shrink: 0;
+                width: max-content;
+            }
+
+            [largePhone],
+            [mediumTablet],
+            [compactLaptop],
+            [mediumLaptop],
+            [compactTablet] {
+                display: none;
+            }
+
+
+            [largeLaptop] {
+                display: block;
+            }
+
+            [content] {
+                gap: 50px;
+
+                [first] {
+                    gap: 20px;
+
+                    div {
+                        gap: 16px;
+
+                        span {
+                            font-size: 44px;
+                        }
+                    }
+
+                    p {
+                        font-size: 18px;
+                    }
+                }
+
+                [second] {
+                    gap: 20px;
+
+                    span {
+                        font-size: 18px;
+                    }
+
+                    [flex] {
+                        div {
+                            padding: 18px 20px;
+
+                            p {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            [content]~[arrows] {
+                display: none;
+            }
+        }
+
+        &_div {
+            display: block;
+        }
+
+        [wrapper] {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+
+            [div] {
+                transition: transform 0.6s ease;
+                width: 100%;
+                flex-shrink: 0;
+            }
+        }
+    }
+}

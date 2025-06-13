@@ -1,0 +1,53 @@
+// Hero Media Screen
+@mixin media-compactPhone {
+    @media screen and (min-width: 425px) {
+        @content;
+    }
+}
+
+@mixin media-hero_4 {
+    @media screen and (min-width: 460px) {
+        @content;
+    }
+}
+
+// Phones Media Screen
+@mixin media-largePhone {
+    @media screen and (min-width: 600px) {
+        @content;
+    }
+}
+
+// Tablets Media Screen
+
+@mixin media-compactTablet {
+    @media screen and (min-width: 768px) {
+        @content;
+    }  
+}
+
+@mixin media-mediumTablet {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}
+
+// Laptop
+
+@mixin media-compactLaptop {
+    @media screen and (min-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin media-mediumLaptop {
+    @media screen and (min-width: 1440px) {
+        @content;
+    }
+}
+
+@mixin media-largeLaptop {
+    @media screen and (min-width: 1800px) {
+        @content;
+    }
+}
