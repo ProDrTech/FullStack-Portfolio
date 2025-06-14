@@ -10,11 +10,47 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import get_object_or_404, render
+from django.contrib.auth import get_user_model
+from chat.models import Message
+from django.db.models import Q
 # Create your views here.
 
+User = get_user_model()
 class IndexView(View):
     def get(self, request):
-        return render(request, 'index.html')
+        """
+        Oddiy foydalanuvchi o‘zining admini bilan chat kontekstini index sahifasiga yuboradi.
+        
+        Template: index.html
+        Context:
+            target – admin foydalanuvchi (is_staff=True)
+            messages – foydalanuvchi va admin orasidagi oxirgi 50 ta xabar
+        """
+        user = request.user
+
+        # Bitta adminni olamiz (birinchi topilgan staff foydalanuvchi)
+        admin = User.objects.filter(is_staff=True).first()
+        if not admin:
+            return render(request, "index.html", {
+                "error": "Hozircha administrator mavjud emas."
+            })
+
+        # Foydalanuvchi ↔ admin o‘rtasidagi oxirgi 50 ta xabar
+        messages = (
+            Message.objects
+            .filter(
+                Q(sender=user, recipient=admin) | Q(sender=admin, recipient=user)
+            )
+            .select_related("sender", "recipient")
+            .order_by("-created_at")[:50][::-1]
+        )
+
+        return render(request, "index.html", {
+            "target": admin,
+            "messages": messages,
+        })
 
 class LoginView(View):
     def get(self, request):
@@ -83,3 +119,35 @@ def verify_email(request):
 
     return HttpResponse("✅ Email muvaffaqiyatli tasdiqlandi.")
 
+User = get_user_model()
+
+@staff_member_required          # faqat admin( is_staff ) kirishi mumkin
+def chat_with_user(request, user_id):
+    """
+    Admin panelida maʼlum foydalanuvchi bilan 1‑on‑1 chat oynasini ochib beradi.
+    
+    Template:  admin_chat.html
+    Kontekst:
+        target          – suhbatdosh (User obyekti)
+        messages        – oxirgi 50 ta xabar (astigina tarix)
+    """
+    target = get_object_or_404(User, pk=user_id)
+
+    # Oxirgi 50 ta xabarni foydalanuvchi ↔ admin jufti bo‘yicha tanlab olamiz
+    messages = (
+        Message.objects
+        .filter(
+            (
+                (Q(sender=target) & Q(recipient=request.user)) |
+                (Q(sender=request.user) & Q(recipient=target))
+            )
+        )
+        .select_related("sender", "recipient")
+        .order_by("-created_at")[:50][::-1]   # oxirgi 50 ni eskidan‑yangi tartibga
+    )
+
+    return render(
+        request,
+        "admin_chat.html",
+        {"target": target, "messages": messages},
+    )

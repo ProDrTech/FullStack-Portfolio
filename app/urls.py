@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import IndexView, LoginView, RegisterView, LogoutView, SettingsView, send_verification_email, verify_email
+from .views import IndexView, LoginView, RegisterView, LogoutView, SettingsView, send_verification_email, verify_email, chat_with_user
 
 app_name = 'app'
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('settings', SettingsView.as_view(), name='settings'),
     path('send-verification-email/', send_verification_email, name='send_verification_email'),
     path('verify-email/', verify_email, name='verify_email'),
+    path("chat/<int:user_id>/", chat_with_user, name="chat_with_user"),
 ]

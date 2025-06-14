@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     "users",
+    'channels',
+    'chat',
 
     'allauth',
     'allauth.account',
@@ -49,6 +51,13 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
 ]
+ASGI_APPLICATION = "core.asgi.application"  
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {"hosts": [("127.0.0.1", 6380)]},
+    }
+}   
 SOCIALACCOUNT_ADAPTER = 'users.adapters.CustomSocialAccountAdapter'
 LOGGING = {
     'version': 1,
@@ -66,6 +75,7 @@ LOGGING = {
     },
 }
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # yuqoriga qo‘sh
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,6 +86,8 @@ MIDDLEWARE = [
 
     "allauth.account.middleware.AccountMiddleware",
 ]
+INSTALLED_APPS.remove("django.contrib.staticfiles")
+INSTALLED_APPS.insert(0, "whitenoise.runserver_nostatic")
 
 SITE_ID = 1
 
@@ -168,7 +180,6 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.CustomUser'
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

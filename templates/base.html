@@ -367,59 +367,6 @@
 </head>
 
 <body>
-  <!-- CHAT MENU -->
-  <div class="chat_menu"
-    style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(to bottom, rgb(47, 47, 55) 28%, rgba(47, 47, 55, 0) 100%); position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer;">
-    <svg class="b24-crm-button-icon b24-crm-button-icon-active" width="28" height="29"
-      xmlns="http://www.w3.org/2000/svg">
-      <path class="b24-crm-button-chat-icon"
-        d="M25.99 7.744a2 2 0 012 2v11.49a2 2 0 01-2 2h-1.044v5.162l-4.752-5.163h-7.503a2 2 0 01-2-2v-1.872h10.073a3 3 0 003-3V7.744zM19.381 0a2 2 0 012 2v12.78a2 2 0 01-2 2h-8.69l-5.94 6.453V16.78H2a2 2 0 01-2-2V2a2 2 0 012-2h17.382z"
-        fill="#FFFFFF" fill-rule="evenodd"></path>
-    </svg>
-  </div>
-
-  <div id="bx-livechat" class="bx-livechat-wrapper" style="display: none;">
-    <div class="bx-livechat-box">
-      <div class="bx-livechat-head">
-        <div class="bx-livechat-title">Muloqot</div>
-        <button class="bx-livechat-close">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </button>
-      </div>
-
-      <div class="bx-livechat-body">
-        <div class="bx-livechat-messages">
-          <div class="bx-livechat-message bx-livechat-message-operator">
-            <div class="bx-livechat-message-avatar">
-              <img
-                src="https://cdn-ru.bitrix24.ru/b21982322/resize_cache/329557/ff58db95aecdfa09ae61b51b5fd8f63f/main/69d/69db6774d39ae3d34395aa12bdf158e3/dk-logo-design-initial-dk-letter-logo-design-monogram-design-pro-vector.jpg.png"
-                alt="Operator">
-            </div>
-            <div class="bx-livechat-message-content">
-              <div class="bx-livechat-message-name">Doniyorjon</div>
-              <div class="bx-livechat-message-text">Salom! Sizga qanday yordam bera olaman?</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bx-livechat-footer">
-        <div class="bx-livechat-input-wrapper">
-          <textarea class="bx-livechat-input" placeholder="Xabar yozing..."></textarea>
-          <button class="bx-livechat-send">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- HEADER -->
   <header class="header container">
     <a class="header_anchor" href="{% url 'app:index' %}">
@@ -485,68 +432,6 @@
   <script src="{% static 'Js/jquery.min.js' %}"></script>
   <script src="{% static 'Js/jquery.li-scroller.1.0.js'%}"></script>
   <script src="{% static 'Js/script.js' %}"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Chat elementlarini tanlab olish
-      const chatMenu = document.querySelector('.chat_menu');
-      const liveChat = document.querySelector('.bx-livechat-wrapper');
-      const closeBtn = document.querySelector('.bx-livechat-close');
-      const sendBtn = document.querySelector('.bx-livechat-send');
-      const input = document.querySelector('.bx-livechat-input');
-      const messagesContainer = document.querySelector('.bx-livechat-messages');
-
-      // Chat menyusini bosganingizda
-      chatMenu.addEventListener('click', function () {
-        liveChat.style.display = 'block';
-        setTimeout(() => {
-          liveChat.classList.add('show');
-        }, 10);
-      });
-
-      // Yopish tugmasini bosganingizda
-      closeBtn.addEventListener('click', function () {
-        liveChat.classList.remove('show');
-        setTimeout(() => {
-          liveChat.style.display = 'none';
-        }, 300);
-      });
-
-      // Xabar yuborish
-      function sendMessage() {
-        const message = input.value.trim();
-        if (message) {
-          const messageHTML = `
-            <div class="bx-livechat-message bx-livechat-message-user">
-              <div class="bx-livechat-message-avatar">
-                <img src="{{request.user.profile_pic.url}}" alt="User" style="background-color: white;">
-              </div>
-              <div class="bx-livechat-message-content">
-                <div class="bx-livechat-message-text">${message}</div>
-              </div>
-            </div>
-          `;
-          messagesContainer.insertAdjacentHTML('beforeend', messageHTML);
-          input.value = '';
-
-          // Xabarlar ro'yxatini pastga scroll qilish
-          const chatBody = document.querySelector('.bx-livechat-body');
-          chatBody.scrollTop = chatBody.scrollHeight;
-        }
-      }
-
-      // Yuborish tugmasini bosganingizda
-      sendBtn.addEventListener('click', sendMessage);
-
-      // Enter tugmasini bosganingizda
-      input.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          sendMessage();
-        }
-      });
-    });
-  </script>
 </body>
 
 </html>

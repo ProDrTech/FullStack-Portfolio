@@ -64,39 +64,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
       dropdown.classList.add('hidden');
     }
   });
+
+  
 })
-
-function setPage(url) {
-  $.ajax({
-    url: url,
-    success: function (response) {
-      $("#main").html(response);
-    }
-  })
-}
-
-$('.pro-link').click(function (event) {
-  event.preventDefault();
-  var url = $(this).data('url')
-  setPage(url);
-})
-
-$("#submitButton").click(function (ev) {
-  var form = $("#article-form");
-  varurl = form.attr('action');
-  var redirect = $(this).data('redirect')
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-      if (data === "OK") {
-        setPage(redirect)
-      } else {
-        alert("Ma'lumotlar not'g'ri kiritildi.")
-      }
-    },
-    error: function (data) {
-    }
-  });
-});   
