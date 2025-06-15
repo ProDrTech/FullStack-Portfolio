@@ -5,6 +5,7 @@ from users.models import CustomUser
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.urls import reverse
 from django.conf import settings
 from django.core.mail import send_mail
@@ -18,6 +19,8 @@ from django.db.models import Q
 # Create your views here.
 
 User = get_user_model()
+
+@method_decorator(login_required, name='dispatch')
 class IndexView(View):
     def get(self, request):
         """

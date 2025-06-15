@@ -26,7 +26,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -75,7 +75,7 @@ LOGGING = {
     },
 }
 MIDDLEWARE = [
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # yuqoriga qo‘sh
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # yuqoriga qo'sh
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -192,7 +192,7 @@ LOGIN_REDIRECT_URL = 'app:index'
 LOGOUT_REDIRECT_URL = 'app:index'
 # Google'dan email olishga ruxsat berish
 SOCIALACCOUNT_QUERY_EMAIL = True
-# Email verificationni o‘chirib qo‘yish (faqat development uchun!)
+# Email verificationni o'chirib qo'yish (faqat development uchun!)
 ACCOUNT_EMAIL_VERIFICATION = "none"
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 SOCIALACCOUNT_LOGIN_ON_GET = True
