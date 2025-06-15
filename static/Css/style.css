@@ -166,6 +166,10 @@ body {
   padding-top: 40px;
 }
 
+.chat_menu {
+  display: none;
+}
+
 .header_anchor {
   display: flex;
   align-items: center;
@@ -233,6 +237,10 @@ body {
     padding-left: 18px;
     padding-right: 18px;
     padding-top: 0px;
+  }
+
+  .chat_menu {
+    display: block;
   }
 
   .header_anchor {

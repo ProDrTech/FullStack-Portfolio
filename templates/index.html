@@ -7,104 +7,103 @@ Photography | Professional Photographer Portfolio
 {% block 'content' %}
 
 <!-- CHAT MENU -->
-<div class="chat_menu"
-     style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(to bottom, rgb(47, 47, 55) 28%, rgba(47, 47, 55, 0) 100%); position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer;">
-    <svg class="b24-crm-button-icon b24-crm-button-icon-active" width="28" height="29" xmlns="http://www.w3.org/2000/svg">
-        <path class="b24-crm-button-chat-icon"
-              d="M25.99 7.744a2 2 0 012 2v11.49a2 2 0 01-2 2h-1.044v5.162l-4.752-5.163h-7.503a2 2 0 01-2-2v-1.872h10.073a3 3 0 003-3V7.744zM19.381 0a2 2 0 012 2v12.78a2 2 0 01-2 2h-8.69l-5.94 6.453V16.78H2a2 2 0 01-2-2V2a2 2 0 012-2h17.382z"
-              fill="#FFFFFF" fill-rule="evenodd"></path>
-    </svg>
+
+<div class="chat_menu">
+  <svg class="b24-crm-button-icon b24-crm-button-icon-active" width="28" height="29" xmlns="http://www.w3.org/2000/svg">
+    <path class="b24-crm-button-chat-icon"
+      d="M25.99 7.744a2 2 0 012 2v11.49a2 2 0 01-2 2h-1.044v5.162l-4.752-5.163h-7.503a2 2 0 01-2-2v-1.872h10.073a3 3 0 003-3V7.744zM19.381 0a2 2 0 012 2v12.78a2 2 0 01-2 2h-8.69l-5.94 6.453V16.78H2a2 2 0 01-2-2V2a2 2 0 012-2h17.382z"
+      fill="#FFFFFF" fill-rule="evenodd"></path>
+  </svg>
 </div>
 
 <!-- LIVE CHAT BOX -->
 <div id="bx-livechat" class="bx-livechat-wrapper" style="display: none;">
-    <div class="bx-livechat-box">
-        <div class="bx-livechat-head">
-            <div class="bx-livechat-title">
-                {% if target %}{{ target.username }}{% else %}Admin{% endif %} bilan muloqot
-            </div>
-            <button class="bx-livechat-close">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </div>
-
-        <div class="bx-livechat-body">
-            <div class="bx-livechat-messages">
-                {% if messages %}
-                    {% for message in messages %}
-                        <div style="margin: 10px 0; text-align: {% if message.sender == request.user %}right{% else %}left{% endif %};">
-                            <div style="display: inline-block; padding: 10px; border-radius: 10px; background-color: {% if message.sender == request.user %}#DCF8C6{% else %}#F1F0F0{% endif %};">
-                                <strong>{{ message.sender.username }}</strong><br>
-                                {{ message.text }} <br>
-                                <small>{{ message.created_at|date:"H:i" }}</small>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p>Xabarlar yo‘q.</p>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="bx-livechat-footer">
-            <div class="bx-livechat-input-wrapper">
-                <textarea class="bx-livechat-input" placeholder="Xabar yozing..."></textarea>
-                <button class="bx-livechat-send">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z"
-                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
+  <div class="bx-livechat-box">
+    <div class="bx-livechat-head">
+      <div class="bx-livechat-title">
+        {% if target %}{{ target.username }}{% else %}Admin{% endif %} bilan muloqot
+      </div>
+      <button class="bx-livechat-close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
     </div>
+
+    <div class="bx-livechat-body">
+      <div class="bx-livechat-messages">
+        {% if messages %}
+        {% for message in messages %}
+        <div style="margin: 10px 0; text-align: {% if message.sender == request.user %}right{% else %}left{% endif %};">
+          <div
+            style="display: inline-block; padding: 10px; border-radius: 10px; background-color: {% if message.sender == request.user %}#DCF8C6{% else %}#F1F0F0{% endif %};">
+            <strong>{{ message.sender.username }}</strong><br>
+            {{ message.text }} <br>
+            <small>{{ message.created_at|date:"H:i" }}</small>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>Xabarlar yo‘q.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="bx-livechat-footer">
+      <div class="bx-livechat-input-wrapper">
+        <textarea class="bx-livechat-input" placeholder="Xabar yozing..."></textarea>
+        <button class="bx-livechat-send">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Optional: home.html qo‘shilgan bo‘lsa -->
 {% include 'home.html' %}
 
 <script>
-    const chatMenu = document.querySelector('.chat_menu');
-    const chatBox = document.getElementById('bx-livechat');
-    const closeBtn = document.querySelector('.bx-livechat-close');
-    const sendBtn = document.querySelector('.bx-livechat-send');
-    const input = document.querySelector('.bx-livechat-input');
-    const messagesContainer = document.querySelector('.bx-livechat-messages');
+  const chatMenu = document.querySelector('.chat_menu');
+  const chatBox = document.getElementById('bx-livechat');
+  const closeBtn = document.querySelector('.bx-livechat-close');
+  const sendBtn = document.querySelector('.bx-livechat-send');
+  const input = document.querySelector('.bx-livechat-input');
+  const messagesContainer = document.querySelector('.bx-livechat-messages');
 
-    // Chat oynasini ko‘rsatish
-    chatMenu.addEventListener("click", () => {
-      chatBox.style.display = "block";
-      setTimeout(() => chatBox.classList.add("show"), 10);
-    });
+  // Chat oynasini ko‘rsatish
+  chatMenu.addEventListener("click", () => {
+    chatBox.style.display = "block";
+    setTimeout(() => chatBox.classList.add("show"), 10);
+  });
 
-    // Chat oynasini yopish
-    closeBtn.addEventListener("click", () => {
-      chatBox.classList.remove("show");
-      setTimeout(() => chatBox.style.display = "none", 300);
-    });
+  // Chat oynasini yopish
+  closeBtn.addEventListener("click", () => {
+    chatBox.classList.remove("show");
+    setTimeout(() => chatBox.style.display = "none", 300);
+  });
 
-    // WebSocket ulanish
-    const socket = new WebSocket(
-      `ws://${window.location.host}/ws/chat/`
-    );
+  // WebSocket ulanish
+  const socket = new WebSocket(
+    `ws://${window.location.host}/ws/chat/`
+  );
 
-    // Scroll pastga tushirish
-    const scrollToBottom = () => {
-      const body = document.querySelector(".bx-livechat-body");
-      body.scrollTop = body.scrollHeight;
-    };
-    scrollToBottom();
+  // Scroll pastga tushirish
+  const scrollToBottom = () => {
+    const body = document.querySelector(".bx-livechat-body");
+    body.scrollTop = body.scrollHeight;
+  };
+  scrollToBottom();
 
-    // Serverdan kelgan xabarni chiqarish
-    socket.onmessage = function (e) {
-      const data = JSON.parse(e.data);
-      const isAdmin = data.sender === "admin";
-      const messageHTML = `
+  // Serverdan kelgan xabarni chiqarish
+  socket.onmessage = function (e) {
+    const data = JSON.parse(e.data);
+    const isAdmin = data.sender === "admin";
+    const messageHTML = `
         <div style="margin: 10px 0; text-align: ${isAdmin ? "left" : "right"};">
           <div style="display: inline-block; padding: 10px; border-radius: 10px; background-color: ${isAdmin ? "#F1F0F0" : "#DCF8C6"};">
             <strong>${isAdmin ? "Admin" : "Siz"}</strong><br>
@@ -113,28 +112,28 @@ Photography | Professional Photographer Portfolio
           </div>
         </div>
       `;
-      messagesContainer.insertAdjacentHTML("beforeend", messageHTML);
-      scrollToBottom();
-    };
+    messagesContainer.insertAdjacentHTML("beforeend", messageHTML);
+    scrollToBottom();
+  };
 
-    // Xabar yuborish
-    function sendMessage() {
-      const text = input.value.trim();
-      if (!text || socket.readyState !== WebSocket.OPEN) return;
+  // Xabar yuborish
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text || socket.readyState !== WebSocket.OPEN) return;
 
-      socket.send(JSON.stringify({ message: text }));
-      input.value = "";
+    socket.send(JSON.stringify({ message: text }));
+    input.value = "";
+  }
+
+  // Yuborish tugmasi
+  sendBtn.addEventListener("click", sendMessage);
+
+  // Enter bilan yuborish
+  input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
     }
-
-    // Yuborish tugmasi
-    sendBtn.addEventListener("click", sendMessage);
-
-    // Enter bilan yuborish
-    input.addEventListener("keypress", function (e) {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
+  });
 </script>
 {% endblock %}
