@@ -10,7 +10,7 @@ class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
         user = super().save_user(request, sociallogin, form)
 
         profile_pic_url = None
-        if sociallogin.account.provider == 'GitHUb':
+        if sociallogin.account.provider == 'GitHub':
             profile_pic_url = sociallogin.account.extra_data.get('avatar_url')
         elif sociallogin.account.provider == 'Google':
             profile_pic_url = sociallogin.account.extra_data.get('picture')
