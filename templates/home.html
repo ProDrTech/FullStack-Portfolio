@@ -1,0 +1,1067 @@
+{% load static %}
+<!-- HERO -->
+<section class="hero container">
+    <div class="hero_first">
+        <p>Stunning {{hero.direction}} by</p>
+        <h1>{{hero.first_name}} {{hero.last_name}}</h1>
+    </div>
+    <div class="hero_second">
+        <img src="{% static 'Images/Group.svg' %}" alt="center Image" />
+    </div>
+    <div class="hero_end">
+        <div>
+            <h2>Let’s</h2>
+            <a href="#" class="btn_second">
+                <img src="{% static 'Images/Icon.svg' %}" alt="icon" />
+            </a>
+        </div>
+        <h2>Work Together</h2>
+    </div>
+</section>
+<!-- COMPONENT -->
+<section class="slider_component">
+    <ul id="ticker01">
+        {% if hero.herocarusel_set.exists %}
+        {% for herocarusel in hero.herocarusel_set.all %}
+        <li>
+            <a href="#">
+                <img src="{% static 'Images/Slider-icon.svg' %}" alt="slider_icon" />
+                <span>{{herocarusel.title}} {{hero.direction}}</span>
+            </a>
+        </li>
+        {% endfor %}
+        {% endif %}
+    </ul>
+</section>
+<!-- COMPONENT -->
+<!-- HERO IMAGES -->
+<section class="wrapper">
+    <div class="wrapper_xxs">
+        <div first-card>
+            <svg width="117" svg_1 height="155" viewBox="0 0 117 155" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="customClip">
+                        <path
+                            d="M116.642 53C116.642 58.5228 112.164 63 106.642 63H48C42.4772 63 38 67.4771 38 73V144.184C38 149.706 33.5228 154.184 28 154.184H10C4.47715 154.184 0 149.706 0 144.184V10C0 4.47715 4.47715 0 10 0H106.642C112.164 0 116.642 4.47715 116.642 10V53Z" />
+                    </clipPath>
+                </defs>
+
+                <image href="
+                    {% if hero.heroimage_set.exists %}{{hero.heroimage_set.first.image.url}}{% endif %}
+                " width="117" height="155" clip-path="url(#customClip)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <svg width="39" height="65" viewBox="0 0 39 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clip-phone-rect-unique">
+                        <rect width="38.1328" height="66.2832" rx="10" />
+                    </clipPath>
+                </defs>
+
+                <image href="
+                    {% if hero.heroimage_set.exists %}{{hero.heroimage_set.all.1.image.url}}{% endif %}
+                " width="39" height="66" clip-path="url(#clip-phone-rect-unique)"
+                    preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+        <div second-card>
+            <svg width="147" height="226" first viewBox="0 0 147 226" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clip-unique-shape">
+                        <path
+                            d="M146.475 213C146.475 218.523 141.997 223 136.475 223H63.3857C57.8629 223 53.3857 218.523 53.3857 213V72.7188C53.3857 67.1959 48.9086 62.7188 43.3857 62.7188H10C4.47715 62.7188 0 58.2416 0 52.7188V10C0 4.47715 4.47715 0 10 0H136.475C141.997 0 146.475 4.47715 146.475 10V213Z" />
+                    </clipPath>
+                </defs>
+                <image href="
+                    {% if hero.heroimage_set.exists %}{{hero.heroimage_set.all.2.image.url}}{% endif %}
+                " width="147" height="226" clip-path="url(#clip-unique-shape)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <div>
+                <svg width="88" height="128" viewBox="0 0 88 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clip-rect-unique">
+                            <rect width="87.4811" height="127.615" rx="10" />
+                        </clipPath>
+                    </defs>
+
+                    <image href="
+                        {% if hero.heroimage_set.exists %}{{hero.heroimage_set.all.3.image.url}}{% endif %}
+                    " width="88" height="128" clip-path="url(#clip-rect-unique)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+                <svg width="88" height="90" viewBox="0 0 88 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clip-rect-small-unique">
+                            <rect width="87.4811" height="89.2871" rx="10" />
+                        </clipPath>
+                    </defs>
+
+                    <image href="
+                        {% if hero.heroimage_set.exists %}{{hero.heroimage_set.all.4.image.url}}{% endif %}
+                    " width="88" height="90" clip-path="url(#clip-rect-small-unique)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+        <svg width="130" abs height="155" viewBox="0 0 130 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="clip-rounded-unique">
+                    <path
+                        d="M112.428 0C121.817 0 129.428 7.61116 129.428 17V46.1543C129.428 55.5431 121.817 63.1543 112.428 63.1543H71.5078C62.119 63.1543 54.5078 70.7655 54.5078 80.1543V137.184C54.5078 146.572 46.8967 154.184 37.5078 154.184H17C7.61116 154.184 0 146.572 0 137.184V17C0 7.61116 7.61116 3.4296e-07 17 0H112.428ZM117.428 69.6875C124.055 69.6877 129.428 75.0602 129.428 81.6875V142.184C129.428 148.811 124.055 154.183 117.428 154.184H69.4238C62.7964 154.184 57.4238 148.811 57.4238 142.184V81.6875C57.4238 75.0601 62.7964 69.6875 69.4238 69.6875H117.428Z" />
+                </clipPath>
+            </defs>
+            <image href="
+                {% if hero.heroimage_set.exists %}{{hero.heroimage_set.last.image.url}}{% endif %}
+            " width="130" height="155" clip-path="url(#clip-rounded-unique)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+    <div class="wrapper_xs default">
+        <div first>
+            <!-- 0‑rasm (birinchi) -->
+            <svg width="158" height="149" viewBox="0 0 158 149" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClipPath123">
+                        <path
+                            d="M157.996 50.5488C157.996 56.0717 153.519 60.5488 147.996 60.5488H61.4727C55.9498 60.5488 51.4727 65.026 51.4727 70.5488V138.186C51.4727 143.708 46.9955 148.186 41.4727 148.186H10C4.47715 148.186 0 143.708 0 138.186V10C0 4.47715 4.47715 0 10 0H147.996C153.519 0 157.996 4.47715 157.996 10V50.5488Z" />
+                    </clipPath>
+                </defs>
+
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.first.image.url }}{% endif %}"
+                    width="158" height="149" clip-path="url(#uniqueClipPath123)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <!-- 1‑rasm -->
+            <svg width="53" height="58" viewBox="0 0 53 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClipPathRect">
+                        <rect y="0.419373" width="52.662" height="57.5806" rx="10" />
+                    </clipPath>
+                </defs>
+
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.1.image.url }}{% endif %}"
+                    width="53" height="58" clip-path="url(#uniqueClipPathRect)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+        <div second>
+            <!-- 2‑rasm -->
+            <svg width="137" first height="210" viewBox="0 0 137 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClipPathShape">
+                        <path
+                            d="M136.108 200C136.108 205.523 131.631 210 126.108 210H60.209C54.6861 210 50.209 205.523 50.209 200V69.0625C50.209 63.5397 45.7318 59.0625 40.209 59.0625H10.9463C5.42344 59.0625 0.946289 54.5853 0.946289 49.0625V10C0.946289 4.47715 5.42344 0 10.9463 0H126.108C131.631 0 136.108 4.47715 136.108 10V200Z" />
+                    </clipPath>
+                </defs>
+
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.2.image.url }}{% endif %}"
+                    width="137" height="210" clip-path="url(#uniqueClipPathShape)"
+                    preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <div>
+                <!-- 3‑rasm -->
+                <svg width="92" height="136" viewBox="0 0 92 136" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="uniqueRectClip">
+                            <rect x="0.0380859" width="91.962" height="135.484" rx="10" />
+                        </clipPath>
+                    </defs>
+
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.3.image.url }}{% endif %}"
+                        width="92" height="136" clip-path="url(#uniqueRectClip)" preserveAspectRatio="xMidYMid slice" />
+                </svg>
+
+                <!-- 4‑rasm -->
+                <svg width="93" height="69" viewBox="0 0 93 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="uniqueClipRect93x69">
+                            <rect x="0.977539" y="0.411255" width="91.962" height="68.5887" rx="10" />
+                        </clipPath>
+                    </defs>
+
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.4.image.url }}{% endif %}"
+                        width="93" height="69" clip-path="url(#uniqueClipRect93x69)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+        <!-- oxirgi rasm (odatda 5‑indeks yoki `.last`) -->
+        <svg width="150" height="146" viewBox="0 0 150 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="uniqueClipPath150x146">
+                    <path
+                        d="M132.146 0.354858C141.534 0.35486 149.146 7.96602 149.146 17.3549V43.0121C149.146 52.4009 141.534 60.0121 132.146 60.0121H80.1553C70.7664 60.0121 63.1553 67.6232 63.1553 77.0121V129C63.1553 138.389 55.5441 146 46.1553 146H17.5918C8.20296 146 0.591797 138.389 0.591797 129V17.3549C0.591797 7.96602 8.20296 0.354858 17.5918 0.354858H132.146ZM137.146 68.0394C143.774 68.0396 149.146 73.4121 149.146 80.0394V134C149.146 140.627 143.774 146 137.146 146H78.502C71.8747 146 66.5022 140.628 66.502 134V80.0394C66.502 73.412 71.8745 68.0394 78.502 68.0394H137.146Z" />
+                </clipPath>
+            </defs>
+
+            <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.last.image.url }}{% endif %}"
+                width="150" height="146" clip-path="url(#uniqueClipPath150x146)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+    <div class="wrapper_s default">
+        <div first>
+            <!-- 0‑rasm (birinchi) -->
+            <svg width="173" height="156" viewBox="0 0 173 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClipPath173x156">
+                        <path
+                            d="M172.066 53.4326C172.066 58.9555 167.589 63.4326 162.066 63.4326H66.0566C60.5338 63.4326 56.0566 67.9098 56.0566 73.4326V145.241C56.0566 150.764 51.5795 155.241 46.0566 155.241H10C4.47715 155.241 0 150.764 0 145.241V10C0 4.47715 4.47715 0 10 0H162.066C167.589 0 172.066 4.47715 172.066 10V53.4326Z" />
+                    </clipPath>
+                </defs>
+
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.first.image.url }}{% endif %}"
+                    width="173" height="156" clip-path="url(#uniqueClipPath173x156)"
+                    preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <!-- 1‑rasm (ikkinchi) -->
+            <svg width="58" height="61" viewBox="0 0 58 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClipPath58x61">
+                        <rect y="0.677124" width="57.352" height="60.3225" rx="10" />
+                    </clipPath>
+                </defs>
+
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.1.image.url }}{% endif %}"
+                    width="58" height="61" clip-path="url(#uniqueClipPath58x61)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+
+        <div second>
+            <!-- 2‑rasm (uchinchi) -->
+            <svg width="148" height="220" viewBox="0 0 148 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClipPath148x220">
+                        <path
+                            d="M147.569 61.8745C147.569 61.8748 147.569 61.875 147.569 61.875V61.875C147.569 61.875 147.568 61.8752 147.568 61.8755V210C147.568 215.523 143.091 220 137.568 220H64.0186C58.4957 220 54.0186 215.523 54.0186 210V71.875C54.0186 66.3522 49.5414 61.875 44.0186 61.875H10.3691C4.84629 61.875 0.369141 57.3978 0.369141 51.875V10C0.369141 4.47715 4.84629 0 10.3691 0H137.569C143.092 0 147.569 4.47715 147.569 10V61.8745Z" />
+                    </clipPath>
+                </defs>
+
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.2.image.url }}{% endif %}"
+                    width="148" height="220" clip-path="url(#uniqueClipPath148x220)"
+                    preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <div>
+                <!-- 3‑rasm (to‘rtinchi) -->
+                <svg width="101" height="142" viewBox="0 0 101 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="uniqueClipPath101x142">
+                            <rect x="0.847656" width="100.152" height="141.935" rx="10" />
+                        </clipPath>
+                    </defs>
+
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.3.image.url }}{% endif %}"
+                        width="101" height="142" clip-path="url(#uniqueClipPath101x142)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+
+                <!-- 4‑rasm (beshinchi) -->
+                <svg width="101" height="72" viewBox="0 0 101 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="uniqueClipPath101x72">
+                            <rect x="0.782227" y="0.144897" width="100.152" height="71.8547" rx="10" />
+                        </clipPath>
+                    </defs>
+
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.4.image.url }}{% endif %}"
+                        width="101" height="72" clip-path="url(#uniqueClipPath101x72)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Oxirgi rasm (so‘ngi element) -->
+        <svg width="163" height="153" viewBox="0 0 163 153" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="uniqueClipPath163x153">
+                    <path
+                        d="M145.415 0.41925C154.804 0.41925 162.415 8.03041 162.415 17.4193V45.9173C162.415 55.3061 154.804 62.9173 145.415 62.9173H85.7666C76.3778 62.9173 68.7666 70.5285 68.7666 79.9173V135.999C68.7666 145.388 61.1554 152.999 51.7666 152.999H17.6318C8.243 152.999 0.631836 145.388 0.631836 135.999V17.4193C0.631836 8.03041 8.243 0.41925 17.6318 0.41925H145.415ZM150.416 71.3265C157.043 71.3265 162.416 76.6992 162.416 83.3265V140.999C162.416 147.627 157.043 152.999 150.416 152.999H84.4121C77.7847 152.999 72.4121 147.627 72.4121 140.999V83.3265C72.4122 76.6992 77.7848 71.3265 84.4121 71.3265H150.416Z" />
+                </clipPath>
+            </defs>
+
+            <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.last.image.url }}{% endif %}"
+                width="163" height="153" clip-path="url(#uniqueClipPath163x153)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+    <div class="wrapper_sm default">
+        <div first>
+            <svg width="229" height="175" viewBox="0 0 229 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clip-custom-shape">
+                        <path
+                            d="M228.351 61.5059C228.351 67.0287 223.873 71.5059 218.351 71.5059H84.3936C78.8707 71.5059 74.3936 75.983 74.3936 81.5059V165C74.3936 170.523 69.9164 175 64.3936 175H10C4.47715 175 0 170.523 0 165V10C0 4.47715 4.47715 0 10 0H218.351C223.873 0 228.351 4.47715 228.351 10V61.5059Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.0.image.url }}{% endif %}"
+                    width="229" height="175" clip-path="url(#clip-custom-shape)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <svg width="77" height="68" viewBox="0 0 77 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clip-rounded-rect">
+                        <rect width="76.112" height="68" rx="10" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.1.image.url }}{% endif %}"
+                    width="77" height="68" clip-path="url(#clip-rounded-rect)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+        <div second>
+            <svg width="196" first height="248" viewBox="0 0 196 248" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="shape">
+                        <path
+                            d="M195.408 66.8433C195.408 66.8435 195.408 66.8438 195.409 66.8438V66.8438C195.409 66.8438 195.409 66.844 195.409 66.8442V238C195.409 243.523 190.932 248 185.409 248H81.2588C75.7359 248 71.2588 243.523 71.2588 238V79.75C71.2588 74.2271 66.7816 69.75 61.2588 69.75H10.0596C4.53672 69.75 0.0595703 65.2728 0.0595703 59.75V10C0.0595703 4.47715 4.53672 0 10.0596 0H185.408C190.931 0 195.408 4.47715 195.408 10V66.8433Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.2.image.url }}{% endif %}"
+                    width="196" height="248" clip-path="url(#shape)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <div>
+                <svg width="133" height="160" viewBox="0 0 133 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clip-rect-shape-133x160">
+                            <rect x="0.0878906" width="132.912" height="160" rx="10" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.3.image.url }}{% endif %}"
+                        width="133" height="160" clip-path="url(#clip-rect-shape-133x160)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+                <svg width="133" height="81" viewBox="0 0 133 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clip-rect-133x81">
+                            <rect x="0.0878906" width="132.912" height="81" rx="10" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.4.image.url }}{% endif %}"
+                        width="133" height="81" clip-path="url(#clip-rect-133x81)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+        <svg width="215" style="top: 75px;" height="180" viewBox="0 0 215 180" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="clip-shape-215x180">
+                    <path
+                        d="M197.703 0C207.092 1.05548e-06 214.703 7.61116 214.703 17V56.7285C214.703 66.1174 207.092 73.7285 197.703 73.7285H107.422C98.033 73.7285 90.4219 81.3397 90.4219 90.7285V163C90.4219 172.389 82.8107 180 73.4219 180H17C7.61116 180 1.77182e-07 172.389 0 163V17C9.01961e-07 7.61116 7.61116 1.90962e-07 17 0H197.703ZM202.704 83.6504C209.331 83.6506 214.704 89.0231 214.704 95.6504V168C214.704 174.627 209.331 180 202.704 180H107.259C100.631 180 95.2588 174.627 95.2588 168V95.6504C95.2588 89.023 100.631 83.6504 107.259 83.6504H202.704Z" />
+                </clipPath>
+            </defs>
+            <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.5.image.url }}{% endif %}"
+                width="215" height="180" clip-path="url(#clip-shape-215x180)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+    <div class="wrapper_compactTablet default">
+        <div first>
+            <svg width="296" height="225" viewBox="0 0 296 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clipPath296x225">
+                        <path
+                            d="M295.891 81.6885C295.891 87.2113 291.413 91.6885 285.891 91.6885H106.397C100.875 91.6885 96.3975 96.1656 96.3975 101.688V214.395C96.3975 219.917 91.9203 224.395 86.3975 224.395H10C4.47715 224.395 0 219.917 0 214.395V10C0 4.47715 4.47715 0 10 0H285.891C291.413 0 295.891 4.47715 295.891 10V81.6885Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.0.image.url }}{% endif %}"
+                    width="296" height="225" clip-path="url(#clipPath296x225)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <svg width="99" height="88" viewBox="0 0 99 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clipRect99x88">
+                        <rect y="0.806122" width="98.624" height="87.1934" rx="10" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.1.image.url }}{% endif %}"
+                    width="99" height="88" clip-path="url(#clipRect99x88)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+
+        <div second>
+            <svg width="254" first height="318" viewBox="0 0 254 318" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clipPath253x318">
+                        <path
+                            d="M253.417 308C253.417 313.523 248.94 318 243.417 318H102.547C97.024 318 92.5469 313.523 92.5469 308V99.4375C92.5469 93.9147 88.0697 89.4375 82.5469 89.4375H10.2881C4.76524 89.4375 0.288086 84.9604 0.288086 79.4375V10C0.288086 4.47715 4.76524 0 10.2881 0H243.417C248.94 0 253.417 4.47715 253.417 10V308Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.2.image.url }}{% endif %}"
+                    width="254" height="318" clip-path="url(#clipPath253x318)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <div>
+                <svg width="173" height="206" viewBox="0 0 173 206" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clipRect173x206">
+                            <rect x="0.775391" width="172.224" height="205.161" rx="10" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.3.image.url }}{% endif %}"
+                        width="173" height="206" clip-path="url(#clipRect173x206)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+
+                <svg width="173" height="105" viewBox="0 0 173 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clipRect173x105">
+                            <rect x="0.775391" y="0.854568" width="172.224" height="103.863" rx="10" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.4.image.url }}{% endif %}"
+                        width="173" height="105" clip-path="url(#clipRect173x105)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+
+        <svg width="280" height="221" viewBox="0 0 280 221" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="clipPath280x221">
+                    <path
+                        d="M262.191 0.451508C271.58 0.451508 279.191 8.06267 279.191 17.4515V73.7894C279.191 83.1782 271.58 90.7894 262.191 90.7894H135.15C125.762 90.7894 118.15 98.4006 118.15 107.789V203.999C118.15 213.388 110.539 220.999 101.15 220.999H17.9844C8.59553 220.999 0.984375 213.388 0.984375 203.999V17.4515C0.98438 8.06267 8.59554 0.451508 17.9844 0.451508H262.191ZM267.191 102.945C273.819 102.945 279.191 108.317 279.191 114.945V208.999C279.191 215.627 273.819 220.999 267.191 220.999H136.418C129.791 220.999 124.418 215.627 124.418 208.999V114.945C124.418 108.317 129.791 102.945 136.418 102.945H267.191Z" />
+                </clipPath>
+            </defs>
+            <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.5.image.url }}{% endif %}"
+                width="280" height="221" clip-path="url(#clipPath280x221)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+    <div class="wrapper_mediumTablet default">
+        <div first>
+            <!-- 0‑rasm -->
+            <svg width="399" height="273" viewBox="0 0 399 273" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clipPath399x273">
+                        <path
+                            d="M398.81 101.295C398.81 106.818 394.332 111.295 388.81 111.295H139.927C134.404 111.295 129.927 115.772 129.927 121.295V262.379C129.927 267.902 125.45 272.379 119.927 272.379H10C4.47716 272.379 0 267.902 0 262.379V9.99999C0 4.47715 4.47715 0 10 0H388.81C394.332 0 398.81 4.47715 398.81 10V101.295Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.0.image.url }}{% endif %}"
+                    width="399" height="273" clip-path="url(#clipPath399x273)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <!-- 1‑rasm -->
+            <svg width="133" height="106" viewBox="0 0 133 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clipRectRounded">
+                        <rect y="0.160919" width="132.928" height="105.839" rx="10" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.1.image.url }}{% endif %}"
+                    width="133" height="106" clip-path="url(#clipRectRounded)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+
+        <div second>
+            <!-- 2‑rasm -->
+            <svg width="342" first height="386" viewBox="0 0 342 386" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="customClip342x386">
+                        <path
+                            d="M341.954 375.999C341.954 381.522 337.477 385.999 331.954 385.999H135.129C129.606 385.999 125.129 381.522 125.129 375.999V118.563C125.129 113.04 120.652 108.562 115.129 108.562H10.7803C5.25743 108.562 0.780273 104.085 0.780273 98.5625V10C0.780273 4.47715 5.25743 0 10.7803 0H331.954C337.477 0 341.954 4.47715 341.954 10V375.999Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.2.image.url }}{% endif %}"
+                    width="342" height="386" clip-path="url(#customClip342x386)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <div>
+                <!-- 3‑rasm -->
+                <svg width="233" height="250" viewBox="0 0 233 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="roundedRectClip233x250">
+                            <rect x="0.87207" width="232.128" height="249.032" rx="10" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.3.image.url }}{% endif %}"
+                        width="233" height="250" clip-path="url(#roundedRectClip233x250)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+
+                <!-- 4‑rasm -->
+                <svg width="233" height="127" viewBox="0 0 233 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="roundedRectClip233x127">
+                            <rect x="0.87207" y="0.370636" width="232.128" height="126.072" rx="10" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.4.image.url }}{% endif %}"
+                        width="233" height="127" clip-path="url(#roundedRectClip233x127)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- 5‑rasm -->
+        <svg width="376" height="268" viewBox="0 0 376 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="complexClip376x268">
+                    <path
+                        d="M358.823 0.290176C368.212 0.290181 375.823 7.90134 375.823 17.2902V92.9454C375.823 102.334 368.212 109.945 358.823 109.945H175.769C166.38 109.945 158.769 117.557 158.769 126.945V250.999C158.769 260.388 151.157 267.999 141.769 267.999H17.8486C8.45979 267.999 0.848633 260.388 0.848633 250.999V17.2902C0.848635 7.90134 8.45979 0.290176 17.8486 0.290176H358.823ZM363.824 124.7C370.452 124.7 375.824 130.073 375.824 136.7V255.999C375.824 262.627 370.452 267.999 363.824 267.999H179.216C172.588 267.999 167.216 262.627 167.216 255.999V136.7C167.216 130.073 172.588 124.7 179.216 124.7H363.824Z" />
+                </clipPath>
+            </defs>
+            <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.5.image.url }}{% endif %}"
+                width="376" height="268" clip-path="url(#complexClip376x268)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+    <div class="wrapper_compactLaptop default">
+        <div first>
+            <!-- 0‑rasm ─ hero.heroimage_set.first -->
+            <svg width="491" height="297" viewBox="0 0 491 297" xmlns="http://www.w3.org/2000/svg" role="img"
+                aria-label="Clipped image">
+                <defs>
+                    <clipPath id="uniqueClipPath491">
+                        <path
+                            d="M490.472 110.972C490.472 116.495 485.995 120.972 480.472 120.972H169.789C164.266 120.972 159.789 125.449 159.789 130.972V286.061C159.789 291.583 155.312 296.061 149.789 296.061H10C4.47715 296.061 0 291.583 0 286.061V10C0 4.47715 4.47715 0 10 0H480.472C485.995 0 490.472 4.47715 490.472 10V110.972Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.first.image.url }}{% endif %}"
+                    width="491" height="297" clip-path="url(#uniqueClipPath491)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <!-- 1‑rasm ─ hero.heroimage_set.all.1 -->
+            <svg width="164" height="116" viewBox="0 0 164 116" xmlns="http://www.w3.org/2000/svg" role="img"
+                aria-label="Clipped image">
+                <defs>
+                    <clipPath id="clipRect164x116">
+                        <rect y="0.519226" width="163.48" height="115.041" rx="10" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.1.image.url }}{% endif %}"
+                    width="164" height="116" clip-path="url(#clipRect164x116)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+
+        <div second>
+            <!-- 2‑rasm ─ hero.heroimage_set.all.2 -->
+            <svg width="421" height="420" viewBox="0 0 421 420" xmlns="http://www.w3.org/2000/svg" role="img"
+                aria-label="Clipped image">
+                <defs>
+                    <clipPath id="clipPath421x420">
+                        <path
+                            d="M420.322 409.56C420.322 415.082 415.845 419.56 410.322 419.56H163.662C158.139 419.56 153.662 415.082 153.662 409.56V128.001C153.662 122.478 149.185 118.001 143.662 118.001H10.7334C5.21055 118.001 0.733398 113.524 0.733398 108.001V10C0.733398 4.47715 5.21055 0 10.7334 0H410.322C415.845 0 420.322 4.47715 420.322 10V409.56Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.2.image.url }}{% endif %}"
+                    width="421" height="420" clip-path="url(#clipPath421x420)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <div>
+                <!-- 3‑rasm ─ hero.heroimage_set.all.3 -->
+                <svg width="286" height="271" viewBox="0 0 286 271" xmlns="http://www.w3.org/2000/svg" role="img"
+                    aria-label="Clipped image">
+                    <defs>
+                        <clipPath id="clipRect286x271">
+                            <rect x="0.519531" width="285.48" height="270.684" rx="10" ry="10" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.3.image.url }}{% endif %}"
+                        width="286" height="271" clip-path="url(#clipRect286x271)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+
+                <!-- 4‑rasm ─ hero.heroimage_set.all.4 -->
+                <svg width="286" height="138" viewBox="0 0 286 138" xmlns="http://www.w3.org/2000/svg" role="img"
+                    aria-label="Clipped image">
+                    <defs>
+                        <clipPath id="clipRect286x138">
+                            <rect x="0.519531" y="0.834412" width="285.48" height="137.034" rx="10" ry="10" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.4.image.url }}{% endif %}"
+                        width="286" height="138" clip-path="url(#clipRect286x138)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- 5‑rasm ─ hero.heroimage_set.last -->
+        <svg width="474" height="291" viewBox="0 0 474 291" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Clipped image">
+            <defs>
+                <clipPath id="clipComplexPath">
+                    <path
+                        d="M461.784 135.242C468.411 135.242 473.784 140.615 473.784 147.242V279C473.784 285.627 468.411 291 461.784 291H229.229C222.602 291 217.23 285.627 217.229 279V147.242C217.229 140.615 222.602 135.242 229.229 135.242H461.784ZM456.783 0.0146484C466.172 0.0146484 473.783 7.62599 473.783 17.0146V102.203C473.783 111.592 466.172 119.203 456.783 119.203H216.88C207.491 119.203 199.88 126.814 199.88 136.203V273.999C199.88 283.388 192.269 290.999 182.88 290.999H17.6016C8.21272 290.999 0.601563 283.388 0.601562 273.999V17.0146C0.601778 7.62599 8.21285 0.0146484 17.6016 0.0146484H456.783Z" />
+                </clipPath>
+            </defs>
+            <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.last.image.url }}{% endif %}"
+                width="474" height="291" clip-path="url(#clipComplexPath)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+    <div class="wrapper_mediumLaptop default">
+        <div first>
+            <!-- 0‑rasm -->
+            <svg width="418" height="294" viewBox="0 0 418 294" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clip-shape418x294">
+                        <path
+                            d="M417.043 103.078C417.043 112.467 409.432 120.078 400.043 120.078H154.143C144.754 120.078 137.143 127.689 137.143 137.078V276.156C137.143 285.545 129.531 293.156 120.143 293.156H17C7.61116 293.156 0 285.545 0 276.156V17C0 7.61116 7.61116 0 17 0H400.043C409.432 0 417.043 7.61116 417.043 17V103.078Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.first.image.url }}{% endif %}"
+                    width="418" height="294" clip-path="url(#clip-shape418x294)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <!-- 1‑rasm -->
+            <svg width="138" height="119" viewBox="0 0 138 119" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clip-rect138x119">
+                        <rect x="0.801758" y="0.578125" width="136.341" height="118.422" rx="11" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.1.image.url }}{% endif %}"
+                    width="138" height="119" clip-path="url(#clip-rect138x119)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+
+        <div second>
+            <!-- 2‑rasm -->
+            <svg width="524" height="424" viewBox="0 0 524 424" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clip-shape524x424">
+                        <path
+                            d="M523.792 411C523.792 418.18 517.972 424 510.792 424H203.96C196.78 424 190.96 418.18 190.96 411V132.25C190.96 125.07 185.14 119.25 177.96 119.25H13.083C5.90331 119.25 0.0830078 113.43 0.0830078 106.25V13C0.0830078 5.8203 5.90331 0 13.083 0H510.792C517.972 0 523.792 5.8203 523.792 13V411Z" />
+                    </clipPath>
+                </defs>
+                <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.2.image.url }}{% endif %}"
+                    width="524" height="424" clip-path="url(#clip-shape524x424)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <div>
+                <!-- 3‑rasm -->
+                <svg width="313" height="243" viewBox="0 0 313 243" xmlns="http://www.w3.org/2000/svg" role="img">
+                    <defs>
+                        <clipPath id="uniqueClipPathId123">
+                            <rect x="0.21875" width="312.782" height="242.641" rx="14" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.3.image.url }}{% endif %}"
+                        width="313" height="243" clip-path="url(#uniqueClipPathId123)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+
+                <!-- 4‑rasm -->
+                <svg width="313" height="170" viewBox="0 0 313 170" xmlns="http://www.w3.org/2000/svg" role="img">
+                    <defs>
+                        <clipPath id="clipRect7Radius">
+                            <rect x="0.217773" y="0.234375" width="312.782" height="169.766" rx="7" />
+                        </clipPath>
+                    </defs>
+                    <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.4.image.url }}{% endif %}"
+                        width="313" height="170" clip-path="url(#clipRect7Radius)"
+                        preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- 5‑rasm (oxirgisi) -->
+        <svg width="464" height="294" viewBox="0 0 464 294" xmlns="http://www.w3.org/2000/svg" role="img">
+            <defs>
+                <clipPath id="clipShape464">
+                    <path
+                        d="M446.128 0.843811C455.517 0.843814 463.128 8.45497 463.128 17.8438V103.922C463.128 113.311 455.517 120.922 446.128 120.922H212.259C202.87 120.922 195.259 128.533 195.259 137.922V277C195.259 286.389 187.648 294 178.259 294H17.3711C7.98225 294 0.371094 286.389 0.371094 277V17.8438C0.371094 8.45497 7.98225 0.843811 17.3711 0.843811H446.128ZM451.128 133.344C457.755 133.344 463.128 138.716 463.128 145.344V282C463.128 288.627 457.755 294 451.128 294H217.685C211.057 294 205.685 288.627 205.685 282V145.344C205.685 138.716 211.057 133.344 217.685 133.344H451.128Z" />
+                </clipPath>
+            </defs>
+            <image href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.last.image.url }}{% endif %}"
+                width="464" height="294" clip-path="url(#clipShape464)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+    <div class="wrapper_largeLaptop default">
+        <div first>
+            <!-- 0‑rasm -->
+            <svg width="530" height="354" viewBox="0 0 530 354" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clipComplexShape530">
+                        <path
+                            d="M529.774 128C529.774 137.389 522.163 145 512.774 145H191.214C181.825 145 174.214 152.611 174.214 162V337C174.214 346.389 166.603 354 157.214 354H17C7.61116 354 0 346.389 0 337V17C0 7.61117 7.61116 0 17 0H512.774C522.163 0 529.774 7.61116 529.774 17V128Z" />
+                    </clipPath>
+                </defs>
+                <image x="0" y="0" width="530" height="354"
+                    href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.first.image.url }}{% endif %}"
+                    clip-path="url(#clipComplexShape530)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <!-- 1‑rasm -->
+            <svg width="174" height="143" viewBox="0 0 174 143" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clipRounded174">
+                        <rect x="0.0185547" width="173.195" height="143" rx="11" ry="11" />
+                    </clipPath>
+                </defs>
+                <image x="0" y="0" width="174" height="143"
+                    href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.1.image.url }}{% endif %}"
+                    clip-path="url(#clipRounded174)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+        </div>
+
+        <div second>
+            <!-- 2‑rasm -->
+            <svg width="666" height="512" viewBox="0 0 666 512" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="clipComplex666">
+                        <path
+                            d="M665.425 499C665.425 506.18 659.605 512 652.425 512H255.624C248.444 512 242.624 506.18 242.624 499V157C242.624 149.82 236.804 144 229.624 144H13.1504C5.97069 144 0.150391 138.18 0.150391 131V13C0.150391 5.8203 5.97069 0 13.1504 0H652.425C659.604 0 665.425 5.8203 665.425 13V499Z" />
+                    </clipPath>
+                </defs>
+                <image x="0" y="0" width="666" height="512"
+                    href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.2.image.url }}{% endif %}"
+                    clip-path="url(#clipComplex666)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+
+            <div>
+                <!-- 3‑rasm -->
+                <svg width="398" height="293" viewBox="0 0 398 293" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clipRounded398">
+                            <rect x="0.668945" width="397.331" height="293" rx="14" ry="14" />
+                        </clipPath>
+                    </defs>
+                    <image x="0" y="0" width="398" height="293"
+                        href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.3.image.url }}{% endif %}"
+                        clip-path="url(#clipRounded398)" preserveAspectRatio="xMidYMid slice" />
+                </svg>
+
+                <!-- 4‑rasm -->
+                <svg width="398" height="205" viewBox="0 0 398 205" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="clipRounded398x205">
+                            <rect x="0.668945" width="397.331" height="205" rx="7" ry="7" />
+                        </clipPath>
+                    </defs>
+                    <image x="0" y="0" width="398" height="205"
+                        href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.all.4.image.url }}{% endif %}"
+                        clip-path="url(#clipRounded398x205)" preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- 5‑rasm (oxirgisi) -->
+        <svg width="589" height="354" viewBox="0 0 589 354" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="clipComplex589x354">
+                    <path
+                        d="M571.323 0C580.712 2.24779e-06 588.323 7.61116 588.323 17V128C588.323 137.389 580.712 145 571.323 145H265.045C255.656 145 248.045 152.611 248.045 162V337C248.045 346.389 240.434 354 231.045 354H17.4775C8.0887 354 0.477539 346.389 0.477539 337V17C0.477545 7.61116 8.0887 0 17.4775 0H571.323ZM576.323 160C582.951 160 588.323 165.373 588.323 172V342C588.323 348.627 582.951 354 576.323 354H273.289C266.662 354 261.289 348.627 261.289 342V172C261.289 165.373 266.662 160 273.289 160H576.323Z" />
+                </clipPath>
+            </defs>
+            <image x="0" y="0" width="589" height="354"
+                href="{% if hero.heroimage_set.exists %}{{ hero.heroimage_set.last.image.url }}{% endif %}"
+                clip-path="url(#clipComplex589x354)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+    </div>
+</section>
+<!-- HERO IMAGES -->
+<!-- HERO -->
+<!-- ABOUT -->
+<section class="about container">
+    <div class="about_heading">
+        <div text>
+            <span>about</span>
+            <h4>I am {{hero.first_name}}</h4>
+        </div>
+        <div class="about_div" href="#">
+            <a href="#" class="btn-border">
+                <span class="btn">Know More -></span>
+            </a>
+        </div>
+    </div>
+    <div class="about_main">
+        <!-- Default svg -->
+        <svg width="358" default height="375" viewBox="0 0 358 375" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="clip-shape-358x375">
+                    <path
+                        d="M341 0C350.389 0 358 7.61116 358 17V229.935C358 239.009 350.829 246.358 341.898 247.965C283.96 258.389 240 309.06 240 370C240 372.761 237.761 375 235 375H17C7.61116 375 0 367.389 0 358V136C0 126.611 7.65898 119.14 16.9355 117.692C69.0917 109.556 109 64.4385 109 10C109 4.47715 113.477 0 119 0H341ZM348.975 263.028C353.959 263.028 358 267.069 358 272.053V363C358 369.627 352.627 375 346 375H263.948C258.571 375 254.212 370.641 254.212 365.264V357.791C254.212 305.455 296.639 263.028 348.975 263.028ZM90.167 0C93.6493 0 96.4727 2.8234 96.4727 6.30566V10.9346C96.4724 60.902 55.9655 101.408 5.99805 101.408C2.68539 101.408 0 98.7228 0 95.4102V12C6.16473e-07 5.37258 5.37258 6.22482e-08 12 0H90.167Z" />
+                </clipPath>
+            </defs>
+
+            <image href="{{about.image.url}}"
+                width="358" height="375" clip-path="url(#clip-shape-358x375)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+        <!-- for responsive 600px svg file -->
+        <svg width="400" height="425" largePhone viewBox="0 0 400 425" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="uniqueClip400x425">
+                    <path
+                        d="M383 0C392.389 0 400 7.61116 400 17V262.752C400 271.826 392.835 279.188 383.883 280.672C318.224 291.554 268.156 348.603 268.156 417.348C268.156 421.574 264.73 425 260.504 425H17C7.61116 425 0 417.389 0 408V151.867C2.21143e-06 142.478 7.65404 134.991 16.9531 133.696C76.1899 125.446 121.788 74.5876 121.788 13.0791C121.788 5.85571 127.644 2.03527e-07 134.867 0H383ZM389.917 298.099C395.486 298.099 400 302.614 400 308.183V413C400 419.627 394.627 425 388 425H295.071C288.977 425 284.036 420.059 284.036 413.965V403.979C284.036 345.503 331.441 298.099 389.917 298.099ZM100.645 0C104.591 0 107.791 3.19912 107.791 7.14551V13.8408C107.791 69.6704 62.5317 114.93 6.70215 114.93C3.00074 114.93 0 111.929 0 108.228V12C0 5.37258 5.37258 1.01503e-07 12 0H100.645Z" />
+                </clipPath>
+            </defs>
+            <image href="{{about.image.url}}"
+                width="400" height="425" clip-path="url(#uniqueClip400x425)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+        <!-- for responsive 768px svg file -->
+        <svg width="358" height="586" compactTablet viewBox="0 0 358 586" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="uniqueClip358x586">
+                    <path
+                        d="M340.999 0.5C350.388 0.500037 357.999 8.11118 357.999 17.5V374.262C357.999 383.304 350.874 390.636 341.988 392.312C286.289 402.812 244.155 451.722 244.155 510.473V568.5C244.155 577.889 236.544 585.5 227.155 585.5H17C7.61116 585.5 4.12756e-08 577.889 0 568.5V17.5C0 8.11116 7.61116 0.5 17 0.5H340.999ZM348.976 410.824C353.96 410.824 358 414.865 358 419.849V573.5C358 580.127 352.627 585.5 346 585.5H266.213C259.585 585.5 254.213 580.127 254.213 573.5V505.587C254.213 453.251 296.64 410.824 348.976 410.824Z" />
+                </clipPath>
+            </defs>
+
+            <image href="{{about.image.url}}"
+                width="358" height="586" clip-path="url(#uniqueClip358x586)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+        <!-- for responsive 1024px svg file -->
+        <svg width="486" height="585" mediumTablet viewBox="0 0 486 585" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="uniqueClip486x585">
+                    <path
+                        d="M469 0C478.389 0 486 7.61116 486 17V376.174C486 383.658 479.933 389.726 472.448 389.726C394.576 389.726 331.448 452.853 331.448 530.726V568C331.448 577.389 323.837 585 314.448 585H17C7.61116 585 0 577.389 0 568V190.186C0.000198511 182.243 5.53206 175.436 13.1318 173.127C83.2759 151.813 136.145 90.8144 145.593 16.2705C146.74 7.21998 154.154 0 163.277 0H469ZM473.999 410.324C480.626 410.324 485.999 415.697 485.999 422.324V573C485.999 579.627 480.626 585 473.999 585H357.103C350.475 585 345.103 579.627 345.103 573V536.324C345.103 466.736 401.515 410.324 471.103 410.324H473.999ZM113.984 0C118.964 0 123 4.03648 123 9.01562V29.6475C123 93.3548 71.3548 145 7.64746 145C3.42394 145 0.000111839 141.576 0 137.353V12C0 5.37258 5.37258 0 12 0H113.984Z" />
+                </clipPath>
+            </defs>
+
+            <image href="{{about.image.url}}"
+                width="486" height="585" clip-path="url(#uniqueClip486x585)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+        <!-- for responsive 1280px svg file -->
+        <svg width="614" height="585" compactLaptop viewBox="0 0 614 585" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="uniqueClip614x585">
+                    <path
+                        d="M597 0C606.389 5.72697e-06 614 7.61116 614 17V372.726C614 382.114 606.389 389.726 597 389.726H559.743C481.871 389.726 418.743 452.853 418.743 530.726V568C418.743 577.389 411.132 585 401.743 585H17C7.61116 585 0 577.389 0 568V197.965C0 188.684 7.46703 181.2 16.6973 180.236C103.834 171.141 173.359 102.841 184.334 16.2773C185.481 7.22686 192.897 0 202.02 0H597ZM601.999 410.324C608.626 410.324 613.999 415.697 613.999 422.324V573C613.999 579.627 608.626 585 601.999 585H447.994C441.367 585 435.994 579.627 435.994 573V536.324C435.994 466.736 492.406 410.324 561.994 410.324H601.999ZM146.38 0C151.359 0.000197876 155.396 4.0366 155.396 9.01562C155.395 84.1177 94.5123 145 19.4102 145H9.66211C4.32601 145 0 140.674 0 135.338V12C0 5.37258 5.37258 3.45984e-07 12 0H146.38Z" />
+                </clipPath>
+            </defs>
+
+            <!-- Rasm -->
+            <image href="{{about.image.url}}"
+                width="614" height="585" clip-path="url(#uniqueClip614x585)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+        <!-- for responsive 1440px svg file -->
+        <svg width="630" height="585" mediumLaptop viewBox="0 0 630 585" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="uniqueClip630x585">
+                    <path
+                        d="M613 0C622.389 0 630 7.61116 630 17V372.726C630 382.114 622.389 389.726 613 389.726H570.655C492.783 389.726 429.655 452.853 429.655 530.726V568C429.655 577.389 422.044 585 412.655 585H17C7.61116 585 3.10643e-07 577.389 0 568V182.957C3.81431e-06 182.024 0.756396 181.268 1.68945 181.268C97.9374 181.268 177.381 109.323 189.178 16.2783C190.325 7.22784 197.74 0 206.863 0H613ZM618 410.324C624.627 410.324 630 415.697 630 422.324V573C630 579.627 624.627 585 618 585H459.356C452.729 585 447.356 579.627 447.356 573V536.324C447.356 466.736 503.769 410.324 573.356 410.324H618ZM159.934 0C165.366 0 169.77 4.40368 169.771 9.83594C169.771 91.7734 103.347 158.197 21.4092 158.197H10.5557C4.72596 158.197 3.48104e-05 153.471 0 147.642V12C0 5.37258 5.37258 1.72323e-07 12 0H159.934Z" />
+                </clipPath>
+            </defs>
+
+            <!-- Rasm -->
+            <image href="{{about.image.url}}"
+                width="630" height="585" clip-path="url(#uniqueClip630x585)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+        <!-- for responsive 1900px svg file -->
+        <svg width="783" height="710" largeLaptop viewBox="0 0 783 710" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="uniqueClip783x710">
+                    <path
+                        d="M766 0C775.389 8.24649e-06 783 7.61116 783 17V456C783 465.389 775.389 473 766 473H675C597.128 473 534 536.128 534 614V693C534 702.389 526.389 710 517 710H17C7.61116 710 1.57048e-07 702.389 0 693V237C5.08963e-06 227.611 7.61116 220 17 220H48C152.382 220 237 135.382 237 31V17C237 7.61116 244.611 2.01344e-09 254 0H766ZM771 498C777.627 498 783 503.373 783 510V698C783 704.627 777.627 710 771 710H568C561.373 710 556 704.627 556 698V624C556 554.412 612.412 498 682 498H771ZM199.062 0C205.655 0.000170528 211 5.34468 211 11.9375C211 111.383 130.383 192 30.9375 192H12C5.37258 192 0 186.627 0 180V12C0 5.37258 5.37258 2.41597e-07 12 0H199.062Z" />
+                </clipPath>
+            </defs>
+
+            <!-- Rasm -->
+            <image href="{{about.image.url}}"
+                width="783" height="710" clip-path="url(#uniqueClip783x710)" preserveAspectRatio="xMidYMid slice" />
+        </svg>
+        <div class="about_me">
+            <div class="about_introduction">
+                <div>
+                    <img src="{% static 'Images/about_icon.svg' %}" alt="icon">
+                    <span>Introduction</span>
+                </div>
+                <p>{{about.introduction}}</p>
+            </div>
+            <div class="about_contact">
+                <div heading>
+                    <div>
+                        <img src="{% static 'Images/about_icon.svg' %}" alt="icon">
+                    </div>
+                    <span>Contact Information</span>
+                </div>
+                <div form>
+                    <div>
+                        <p>Email</p>
+                        <h6>{{  about.email }}</h6>
+                    </div>
+                    <div>
+                        <p>Phone Number</p>
+                        <h6>{{ about.phone_number }}</h6>
+                    </div>
+                </div>
+                <div button>
+                    <div first>
+                        <a href="{{ about.facebook }}" target="_blank"><img src="{% static 'Images/facebook.svg' %}" alt="facebook"></a>
+                        <a href="{{ about.twitter }}" target="_blank"><img src="{% static 'Images/twitter.svg' %}" alt="twitter"></a>
+                        <a href="{{ about.linkedin }}" target="_blank"><img src="{% static 'Images/linkedIn.svg' %}" alt="linkedIn"></a>
+                    </div>
+                    <div second>
+                        <div>
+                            <a href="#" class="btn-border">
+                                <span class="btn">Let’s Work</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{% static 'CV.docx' %}" class="btn-border">
+                                <span class="btn">Download CV</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ABOUT -->
+<!-- SERVICES -->
+<section class="service container">
+    <div heading>
+        <div text>
+            <span>Services</span>
+            <h4>My {{hero.direction}} Services</h4>
+        </div>
+        <div button>
+            <div arrows>
+                <div class="arrow" left href="#">
+                    <span class="arrow_btn">
+                        <img src="{% static 'Images/left-arrow.svg' %}" alt="left-arrow">
+                    </span>
+                </div>
+                <div class="arrow" right href="#">
+                    <span class="arrow_btn">
+                        <img src="{% static 'Images/right-arrow.svg' %}" alt="right-arrow">
+                    </span>
+                </div>
+            </div>
+            <div class="service_div">
+                <a href="#" class="btn-border">
+                    <span class="btn">View All Works -></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div wrapper>
+        {% for service in services %}
+        <div main div>
+            <!-- for responsive default svg file -->
+            <svg width="358" height="301" default viewBox="0 0 358 301" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClip358x301">
+                        <path
+                            d="M0 12C0 5.37258 5.37258 0 12 0H346C352.627 0 358 5.37258 358 12V271C358 287.569 344.569 301 328 301H30C13.4315 301 0 287.569 0 271V12Z" />
+                    </clipPath>
+                </defs>
+
+                <image
+                    href="{{service.image.url}}"
+                    width="358" height="301" clip-path="url(#uniqueClip358x301)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <!-- for responsive 600px svg file -->
+            <svg width="400" height="351" largePhone viewBox="0 0 400 351" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClip9">
+                        <path
+                            d="M0 12C0 5.37258 5.37258 0 12 0H388C394.627 0 400 5.37258 400 12V321C400 337.569 386.569 351 370 351H30C13.4315 351 0 337.569 0 321V12Z" />
+                    </clipPath>
+                </defs>
+
+                <image
+                    href="{{service.image.url}}"
+                    width="400" height="351" clip-path="url(#uniqueClip9)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <!-- for responsive 768px svg file -->
+            <svg width="348" height="678" compactTablet viewBox="0 0 348 678" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClip348x678">
+                        <path
+                            d="M0 20C0 8.9543 8.95431 0 20 0H328C339.046 0 348 8.95431 348 20V658C348 669.046 339.046 678 328 678H100C44.7715 678 0 633.228 0 578V20Z" />
+                    </clipPath>
+                </defs>
+
+                <!-- Rasm -->
+                <image
+                    href="{{service.image.url}}"
+                    width="348" height="678" clip-path="url(#uniqueClip348x678)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <!-- for responsive 1024px svg file -->
+            <svg width="476" height="606" mediumTablet viewBox="0 0 476 606" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClip476x606">
+                        <path
+                            d="M0 20C0 8.95432 8.95431 0 20 0H456C467.046 0 476 8.95431 476 20V586C476 597.046 467.046 606 456 606H100C44.7715 606 0 561.228 0 506V20Z" />
+                    </clipPath>
+                </defs>
+
+                <!-- Rasm -->
+                <image
+                    href="{{service.image.url}}"
+                    width="476" height="606" clip-path="url(#uniqueClip476x606)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <!-- for responsive 1280px svg file -->
+            <svg width="604" height="562" compactLaptop viewBox="0 0 604 562" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClip604x562">
+                        <path
+                            d="M0 20C0 8.95431 8.9543 0 20 0H584C595.046 0 604 8.9543 604 20V542C604 553.046 595.046 562 584 562H100C44.7715 562 0 517.228 0 462V20Z" />
+                    </clipPath>
+                </defs>
+
+                <!-- Rasm -->
+                <image
+                    href="{{service.image.url}}"
+                    width="604" height="562" clip-path="url(#uniqueClip604x562)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <!-- for responsive 1440px svg file -->
+            <svg width="638" height="562" mediumLaptop viewBox="0 0 638 562" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClip638x562">
+                        <path
+                            d="M0 20C0 8.95431 8.95431 0 20 0H618C629.046 0 638 8.9543 638 20V542C638 553.046 629.046 562 618 562H100C44.7715 562 0 517.228 0 462V20Z" />
+                    </clipPath>
+                </defs>
+
+                <!-- Rasm -->
+                <image
+                    href="{{service.image.url}}"
+                    width="638" height="562" clip-path="url(#uniqueClip638x562)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <!-- for responsive 1900px svg file -->
+            <svg width="900" height="625" largeLaptop viewBox="0 0 900 625" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="uniqueClip900x625">
+                        <path
+                            d="M0 20C0 8.95431 8.95431 0 20 0H880C891.046 0 900 8.95431 900 20V605C900 616.046 891.046 625 880 625H100C44.7715 625 0 580.228 0 525V20Z" />
+                    </clipPath>
+                </defs>
+
+                <!-- Rasm -->
+                <image
+                    href="{{service.image.url}}"
+                    width="900" height="625" clip-path="url(#uniqueClip900x625)" preserveAspectRatio="xMidYMid slice" />
+            </svg>
+            <div content>
+                <div first>
+                    <div>
+                        <span>Events</span>
+                        <div>
+                            <a href="#" class="btn_second">
+                                <img src="{% static 'Images/Icon.svg' %}" alt="icon" />
+                            </a>
+                        </div>
+                    </div>
+                    <p>{{service.desc}}</p>
+                </div>
+                <div second>
+                    <span>Service Highlights</span>
+                    <div flex>
+                        {% if service.servicehighlight_set.exists %}
+                            {% for highlight in service.servicehighlight_set.all %}
+                                <div>
+                                    <img src="{% static 'Images/service-icon.svg' %}" alt="service-icon">
+                                    <p>{{highlight.desc}}</p>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div arrows>
+        <div class="arrow" secondLeft href="#">
+            <span class="arrow_btn">
+                <img src="{% static 'Images/left-arrow.svg' %}" alt="left-arrow">
+            </span>
+        </div>
+        <div class="arrow" secondRight href="#">
+            <span class="arrow_btn">
+                <img src="{% static 'Images/right-arrow.svg' %}" alt="right-arrow">
+            </span>
+        </div>
+    </div>
+</section>
+<!-- SERVICES -->

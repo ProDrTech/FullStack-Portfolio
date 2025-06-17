@@ -1,0 +1,12 @@
+@import "../abstract/mixins";
+@import "../abstract/variables";
+
+.btn_second {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4A2CED;
+    padding: 14px 30px;
+    border-radius: 100px;
+    box-shadow: inset 4px 4px 17.4px rgba(255, 255, 255, 0.28);
+}

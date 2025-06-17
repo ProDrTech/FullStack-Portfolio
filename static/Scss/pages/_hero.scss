@@ -1,0 +1,615 @@
+@import "../abstract/mixins";
+@import "../abstract/variables";
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 0;
+  text-transform: uppercase;
+
+  &_first {
+    p {
+      color: #62646c;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 600;
+      color: #e4e4e6;
+    }
+  }
+
+  &_second {
+    display: none;
+  }
+
+  &_end {
+    div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+
+      h2 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #fff;
+      }
+    }
+
+    div~h2 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+}
+
+@include media-largePhone {
+  .hero {
+    gap: 35px;
+
+    &_first {
+      p {
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 60px;
+      }
+    }
+
+    &_end {
+      div {
+        gap: 20px;
+
+        h2 {
+          font-size: 35px;
+        }
+      }
+
+      div~h2 {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+@include media-mediumTablet {
+  .hero {
+    position: relative;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    height: 200px;
+    padding: 0;
+    overflow: hidden;
+
+    &_first {
+      p {
+        font-size: 16px;
+      }
+
+      h1 {
+        font-size: 45px;
+      }
+    }
+
+    &_second {
+      position: absolute;
+      display: block;
+      height: 100%;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &_end {
+      div {
+        gap: 20px;
+
+        h2 {
+          font-size: 35px;
+        }
+      }
+
+      div~h2 {
+        font-size: 33px;
+      }
+    }
+  }
+}
+
+@include media-compactLaptop {
+  .hero {
+    height: 250px;
+
+    &_first {
+      p {
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 55px;
+      }
+    }
+
+    &_end {
+      div {
+        h2 {
+          font-size: 40px;
+        }
+      }
+
+      div~h2 {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+@include media-mediumLaptop {
+  .hero {
+    height: 260px;
+
+    &_first {
+      h1 {
+        font-size: 60px;
+      }
+    }
+
+    &_end {
+      div {
+        h2 {
+          font-size: 48px;
+        }
+      }
+
+      div~h2 {
+        font-size: 48px;
+      }
+    }
+  }
+}
+
+@include media-largeLaptop {
+  .hero {
+    height: 330px;
+
+    &_first {
+      p {
+        font-size: 22px;
+      }
+
+      h1 {
+        font-size: 80px;
+      }
+    }
+
+    &_end {
+      div {
+        h2 {
+          font-size: 58px;
+        }
+      }
+
+      div~h2 {
+        font-size: 58px;
+      }
+    }
+  }
+}
+
+.default {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: start;
+
+  [first] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  [second] {
+    display: flex;
+    align-items: start;
+    height: 100%;
+
+    svg[first] {
+      flex-shrink: 0;
+      height: 100%;
+    }
+
+    div {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  [second]~svg {
+    position: absolute;
+  }
+}
+
+.wrapper {
+  width: max-content;
+  margin: 0 auto;
+
+
+  &_xxs {
+    width: 100%;
+    flex-shrink: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: start;
+    gap: 5px;
+    height: 226px;
+
+    [first-card] {
+      display: flex;
+      flex-direction: column;
+      height: 99%;
+      justify-content: space-between;
+    }
+
+    [second-card] {
+      display: flex;
+      align-items: start;
+      gap: 5px;
+      height: 100%;
+
+      svg[first] {
+        flex-shrink: 0;
+        height: 100%;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+    }
+
+    [abs] {
+      position: absolute;
+      left: 41.5px;
+      top: 70px;
+    }
+
+  }
+
+  &_sm,
+  &_xs,
+  &_s,
+  &_compactTablet,
+  &_mediumTablet,
+  &_compactLaptop,
+  &_mediumLaptop,
+  &_largeLaptop {
+    display: none;
+  }
+}
+
+@include media-compactPhone {
+  .wrapper {
+    &_xxs,
+    &_sm,
+    &_s,
+    &_compactTablet,
+    &_mediumTablet,
+    &_compactLaptop,
+    &_mediumLaptop,
+    &_largeLaptop {
+      display: none;
+    }
+
+    &_xs {
+      height: 210px;
+      display: flex;
+      gap: 3.95px;
+
+      [first] {
+        gap: 4.23px;
+      }
+
+      [second] {
+        gap: 3.93px;
+
+        div {
+          gap: 5.93px;
+        }
+      }
+
+      [second]~svg {
+        top: 64.35px;
+        left: 56.59px;
+      }
+    }
+  }
+}
+
+@include media-hero_4 {
+  .wrapper {
+
+    &_xxs,
+    &_xs,
+    &_sm,
+    &_compactTablet,
+    &_mediumTablet,
+    &_compactLaptop,
+    &_mediumLaptop,
+    &_largeLaptop {
+      display: none;
+    }
+
+    &_s {
+      height: 220px;
+      display: flex;
+      gap: 4.3px;
+
+      [first] {
+        gap: 4.44px;
+      }
+
+      [second] {
+        gap: 4.28px;
+
+        div {
+          gap: 6.21px;
+        }
+      }
+
+      [second]~svg {
+        top: 67.42px;
+        left: 61.63px;
+      }
+    }
+  }
+}
+
+@include media-largePhone {
+  .wrapper {
+
+    &_xxs,
+    &_xs,
+    &_s,
+    &_compactTablet,
+    &_mediumTablet,
+    &_compactLaptop,
+    &_mediumLaptop,
+    &_largeLaptop {
+      display: none;
+    }
+
+    &_sm {
+      gap: 5.71px;
+      height: 246px;
+      display: flex;
+
+      [first] {
+        gap: 5px;
+      }
+
+      [second] {
+        gap: 5.68px;
+
+        div {
+          gap: 7px;
+        }
+      }
+
+      [second]~svg {
+        top: 65px;
+        left: 81.79px;
+      }
+    }
+  }
+}
+
+@include media-compactTablet {
+  .wrapper {
+
+    &_xxs,
+    &_xs,
+    &_s,
+    &_sm,
+    &_mediumTablet,
+    &_compactLaptop,
+    &_mediumLaptop,
+    &_largeLaptop {
+      display: none;
+    }
+
+    &_compactTablet {
+      gap: 7.4px;
+      height: 318px;
+      display: flex;
+
+      [first] {
+        gap: 6.41px;
+      }
+
+      [second] {
+        gap: 7.36px;
+
+        div {
+          gap: 7.69px;
+        }
+      }
+
+      [second]~svg {
+        top: 97.45px;
+        left: 105.98px;
+      }
+    }
+  }
+}
+
+@include media-mediumTablet {
+  .wrapper {
+
+    &_xxs,
+    &_xs,
+    &_s,
+    &_sm,
+    &_compactTablet,
+    &_compactLaptop,
+    &_mediumLaptop,
+    &_largeLaptop {
+      display: none;
+    }
+
+    &_mediumTablet {
+      gap: 9.97px;
+      height: 386px;
+      display: flex;
+
+      [first] {
+        gap: 7.78px;
+      }
+
+      [second] {
+        gap: 9.92px;
+
+        div {
+          gap: 9.34px;
+        }
+      }
+
+      [second]~svg {
+        top: 118.29px;
+        left: 142.85px;
+      }
+    }
+  }
+}
+
+@include media-compactLaptop {
+  .wrapper {
+
+    &_xxs,
+    &_xs,
+    &_s,
+    &_sm,
+    &_compactTablet,
+    &_mediumTablet,
+    &_mediumLaptop,
+    &_largeLaptop {
+      display: none;
+    }
+
+    &_compactLaptop {
+      gap: 12.26px;
+      height: 420px;
+      display: flex;
+
+      [first] {
+        gap: 8.46px;
+      }
+
+      [second] {
+        gap: 12.2px;
+
+        div {
+          gap: 10.15px;
+        }
+      }
+
+      [second]~svg {
+        top: 129.01px;
+        left: 170.6px;
+      }
+    }
+  }
+}
+
+@include media-mediumLaptop {
+  .wrapper {
+
+    &_xxs,
+    &_xs,
+    &_s,
+    &_sm,
+    &_compactTablet,
+    &_mediumTablet,
+    &_compactLaptop,
+    &_largeLaptop {
+      display: none;
+    }
+
+    &_mediumLaptop {
+      gap: 16.04px;
+      height: 424px;
+      display: flex;
+
+      [first] {
+        gap: 12.42px;
+      }
+
+      [second] {
+        gap: 10.43px;
+
+        div {
+          gap: 11.59px;
+        }
+      }
+
+      [second]~svg {
+        top: 130.84px;
+        left: 148.37px;
+      }
+    }
+  }
+}
+
+@include media-largeLaptop {
+  .wrapper {
+    &_xxs,
+    &_xs,
+    &_s,
+    &_sm,
+    &_compactTablet,
+    &_mediumTablet,
+    &_compactLaptop,
+    &_mediumLaptop {
+      display: none;
+    }
+
+    &_largeLaptop {
+      gap: 20px;
+      height: 512px;
+      display: flex;
+
+      [first] {
+        gap: 15px;
+      }
+
+      [second] {
+        gap: 13px;
+
+        div {
+          gap: 14px;
+        }
+      }
+
+      [second]~svg {
+        top: 158px;
+        left: 188.48px;
+      }
+    }
+  }
+}

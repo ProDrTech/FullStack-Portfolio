@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}
+Photography | Professional Photographer Portfolio
+{% endblock %}
+
+{% block 'content' %}
+
+<!-- CHAT MENU -->
+
+<!-- Floating button -->
+<div class="chat-menu" id="chatMenu">
+  <svg width="28" height="29" viewBox="0 0 28 29" xmlns="http://www.w3.org/2000/svg" fill="white">
+    <path
+      d="M25.99 7.744a2 2 0 012 2v11.49a2 2 0 01-2 2h-1.044v5.162l-4.752-5.163h-7.503a2 2 0 01-2-2v-1.872h10.073a3 3 0 003-3V7.744zM19.381 0a2 2 0 012 2v12.78a2 2 0 01-2 2h-8.69l-5.94 6.453V16.78H2a2 2 0 01-2-2V2a2 2 0 012-2h17.382z" />
+  </svg>
+</div>
+
+<!-- Chat widget -->
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-header">
+    <span>{{ target.get_full_name|default:target.username }}</span>
+    <button id="chatClose" aria-label="Yopish">
+      <svg width="24" height="24" viewBox="0 0 24 24">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="chat-messages" id="chatMessages">
+    {% for msg in messages %}
+    <div class="chat-message {% if msg.sender.is_staff %}message-admin{% else %}message-user{% endif %}">
+      {{ msg.text }}<br>
+      <small style="font-size:11px;opacity:.6;">{{ msg.created_at|date:'H:i' }}</small>
+    </div>
+    {% empty %}
+    <p style="text-align:center;color:gray;">Xabar yo‘q</p>
+    {% endfor %}
+  </div>
+
+  <div class="chat-input-box">
+    <textarea class="chat-input" id="chatInput" rows="1" placeholder="Xabar yozing..."></textarea>
+    <button class="chat-send" id="chatSend">Yuborish</button>
+  </div>
+</div>
+
+
+<!-- Optional: home.html qo‘shilgan bo‘lsa -->
+{% include 'home.html' with hero=hero about=about services=services %}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const chatMenu = document.getElementById("chatMenu");
+      const chatWidget = document.getElementById("chatWidget");
+      const chatClose = document.getElementById("chatClose");
+      const chatMessages = document.getElementById("chatMessages");
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+
+      // Toggle widget
+      chatMenu.addEventListener("click", () => {
+        chatWidget.classList.add("show");
+      });
+      chatClose.addEventListener("click", () => {
+        chatWidget.classList.remove("show");
+      });
+
+      // WebSocket
+      const socket = new WebSocket(`ws://${window.location.host}/ws/chat/`);
+
+      const scrollToBottom = () => {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      };
+      scrollToBottom();
+
+      socket.onmessage = (e) => {
+        const data = JSON.parse(e.data);
+        const cls = data.sender === "admin" ? "message-admin" : "message-user";
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `chat-message ${cls}`;
+        msgDiv.innerHTML = `${data.message}<br><small style="font-size:11px;opacity:.6;">Hozirgina</small>`;
+        chatMessages.appendChild(msgDiv);
+        scrollToBottom();
+      };
+
+      function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text || socket.readyState !== WebSocket.OPEN) return;
+        socket.send(JSON.stringify({ message: text }));
+        chatInput.value = "";
+      }
+
+      chatSend.addEventListener("click", sendMessage);
+      chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+    });
+  </script>
+{% endblock %}

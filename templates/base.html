@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    {% block 'title' %}{% endblock %}
+  </title>
+
+  <!-- Tavsif -->
+  <meta name="description"
+    content="Explore the dark-themed photography portfolio of Asadbek Odilov. Capturing moments with artistic precision – portraits, nature, events and more." />
+
+  <!-- Kalit so'zlar -->
+  <meta name="keywords"
+    content="photography, photographer portfolio, dark theme, photo gallery, nature photos, portrait photography, event photography" />
+
+  <!-- Muallif -->
+  <meta name="author" content="Asadbek Odilov" />
+
+  <!-- Kodlash -->
+  <meta charset="UTF-8" />
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="https://i.postimg.cc/Qx1kP2W4/favicon.png" type="image/x-icon" />
+
+  <!-- Responsive dizayn -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Open Graph (Facebook va boshqalar uchun) -->
+  <meta property="og:title" content="Dark Theme Photography Portfolio" />
+  <meta property="og:description"
+    content="Discover a visually striking, dark-themed photography portfolio featuring portraits, landscapes, and more." />
+  <meta property="og:image" content="https://i.postimg.cc/CLj4R3Jy/Rectangle-6330.png" />
+  <meta property="og:url" content="https://photographer-portfolio-292v.onrender.com/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Asadbek Odilov Photography Portfolio" />
+  <meta name="twitter:description" content="A dark-themed gallery of professional photography." />
+  <meta name="twitter:image" content="https://i.postimg.cc/CLj4R3Jy/Rectangle-6330.png" />
+  <!--  
+        Links
+    -->
+  <!-- Google Fonts (Manrope) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+
+  <!-- Style css link -->
+  <link rel="stylesheet" href="{% static 'Css/style.css' %}" />
+
+  <!-- JavaScript fayllari -->
+  <script src="{% static 'Js/main.js' %}" defer></script>
+  <script src="{% static 'Js/chat.js' %}" defer></script>
+
+  <style>
+    :root {
+      --primary-color: #4d4d4f;
+      --primary-hover: #1d1d1d;
+      --text-light: #ffffff;
+      --text-dark: #1e293b;
+      --bg-light: #ffffff;
+      --bg-gray: #f1f5f9;
+      --border-color: #e2e8f0;
+      --shadow-color: rgba(0, 0, 0, 0.25);
+    }
+
+    /* === Suvacha (floating) tugma === */
+    .chat-menu {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: var(--text-light);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 6px 24px var(--shadow-color);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      z-index: 1000;
+    }
+
+    .chat-menu:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px var(--shadow-color);
+    }
+
+    .chat-menu svg {
+      width: 28px;
+      height: 28px;
+      pointer-events: none;
+    }
+
+    /* === Chat vidjet oyna === */
+    .chat-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 360px;
+      max-height: 640px;
+      background: var(--bg-light);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px var(--shadow-color);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .chat-widget.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* === Sarlavha paneli === */
+    .chat-header {
+      background: var(--primary-color);
+      color: var(--text-light);
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header button {
+      background: transparent;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      padding: 4px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .chat-header button:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .chat-header svg {
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+    }
+
+    /* === Xabarlar oynasi === */
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: var(--bg-gray);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scrollbar-width: thin;
+    }
+
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    /* === Xabarlar === */
+    .chat-message {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      word-wrap: break-word;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .message-user {
+      align-self: flex-end;
+      background: var(--primary-color);
+      color: var(--text-light);
+    }
+
+    .message-admin {
+      align-self: flex-start;
+      background: var(--border-color);
+      color: var(--text-dark);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === Xabar jo'natish qutisi === */
+    .chat-input-box {
+      display: flex;
+      gap: 10px;
+      padding: 14px 16px;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-light);
+    }
+
+    .chat-input {
+      flex: 1;
+      min-height: 38px;
+      max-height: 120px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      resize: none;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .chat-input:focus {
+      outline: 2px solid var(--primary-color);
+      border-color: transparent;
+    }
+
+    .chat-send {
+      background: var(--primary-color);
+      color: var(--text-light);
+      border: none;
+      padding: 0 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+
+    .chat-send:hover {
+      background: var(--primary-hover);
+    }
+
+    /* === Responsivlik === */
+    @media (max-width: 768px) {
+      .chat-widget,
+      .chat-widget.show,
+      .chat-widget:not(.show) {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        max-height: 200vh;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+      }
+
+      .chat-menu {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header container">
+    <a class="header_anchor" href="{% url 'app:index' %}"
+      style="font-size: 35px; text-transform: uppercase; font-weight: 600; color: #fff;">
+      <img src="{% static 'Images/Logo.svg' %}" alt="logo">
+    </a>
+
+    <nav class="header_nav">
+      <ul>
+        <li><a href="{% url 'app:index' %}" class="active">Home</a></li>
+        <li><a href="#">About Me</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    {% if request.user.is_authenticated %}
+    <div user>
+      <div class="header_user" id="userToggle">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          {% if request.user.profile_pic %}
+          <img src="{{ request.user.profile_pic.url }}" alt="user_img" style="background-color: white;">
+          {% else %}
+          <img src="/media/profile_images/default.webp" alt="default_user_img" style="background-color: white;">
+          {% endif %}
+          <span>{{request.user.username}}</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true" focusable="false">
+          <path d="M13 6L8 11L3 6" stroke="#BABEC3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          </path>
+        </svg>
+      </div>
+
+      <!-- Dropdown menu -->
+      <ul class="dropdown_menu hidden" id="userDropdown">
+        <li><a href="{% url 'app:settings' %}">Sozlamalar</a></li>
+        <li><a href="{% url 'app:logout' %}">Chiqish</a></li>
+      </ul>
+    </div>
+    {% else %}
+    <div class="header_div">
+      <a href="{% url 'app:login' %}" class="btn-border">
+        <span class="btn">Login Page</span>
+      </a>
+    </div>
+    {% endif %}
+
+    <a href="#" class="header_gumburger">
+      <img src="{% static 'Images/Gumburger_btn.svg' %}" alt="Gumburger" />
+    </a>
+  </header>
+  <div class="br"></div>
+  <!-- HEADER -->
+
+  <!-- MAIN -->
+  <main>
+    {% block 'content' %}{% endblock %}
+  </main>
+  <!-- MAIN -->
+
+  <!-- SCRIPT -->
+  <script src="{% static 'Js/jquery.min.js' %}"></script>
+  <script src="{% static 'Js/jquery.li-scroller.1.0.js'%}"></script>
+  <script src="{% static 'Js/script.js' %}"></script>
+</body>
+
+</html>

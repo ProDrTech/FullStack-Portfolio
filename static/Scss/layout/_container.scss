@@ -1,0 +1,18 @@
+@import "../abstract/mixins";
+
+.container {
+    width: calc(100% - 32px);
+    margin: 0 auto;
+}
+
+@include media-mediumLaptop {
+    .container {
+        width: calc(100% - 124px);
+    }
+}
+
+@include media-largeLaptop {
+    .container {
+        width: 1800px;
+    }
+}

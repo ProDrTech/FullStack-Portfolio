@@ -1,0 +1,22 @@
+@import "../abstract/mixins";
+@import "../abstract/variables";
+
+.arrow {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1px;
+    /* border qalinligi */
+    border-radius: 50%;
+    background: linear-gradient(to right,
+            rgba(47, 47, 55, 1) 28%,
+            rgba(47, 47, 55, 0) 100%);
+
+    .arrow_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: #1c1c21;
+        border-radius: 50%;
+    }
+}

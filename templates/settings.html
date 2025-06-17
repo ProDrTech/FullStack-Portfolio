@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}
+Settings
+{% endblock %}
+
+{% block 'content' %}
+<div
+    style="position: relative; top: 250px; max-width: 520px; margin: 0 auto; background-color: #0f0f11; border-radius: 12px; padding: 30px; box-shadow: 0 0 0 1px #1c1c21; border-top: 1px solid #1c1c21;">
+
+    <h2 style="margin-bottom: 25px; text-align: center; color: #e5e1fc; font-size: 24px; font-weight: 600;">
+        Sozlamalar
+    </h2>
+
+    <div style="margin-bottom: 20px;">
+        <span
+            style="font-weight: 600; color: #9a96c7; margin-bottom: 6px; display: block; font-size: 15px;">Foydalanuvchi:</span>
+        <span style="font-size: 16px; color: #d6d0fb; text-transform: capitalize;">{{ request.user.username }}</span>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <span
+            style="font-weight: 600; color: #9a96c7; margin-bottom: 6px; display: block; font-size: 15px;">Email:</span>
+        <span style="font-size: 16px; color: #d6d0fb;">{{ request.user.email }}</span>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <span style="font-weight: 600; color: #9a96c7; margin-bottom: 6px; display: block; font-size: 15px;">Email
+            holati:</span>
+
+        {% if not request.user.email_verified %}
+        <span style="font-weight: bold; margin-top: 10px; font-size: 14px; color: #ff6b6b;">Tasdiqlanmagan</span>
+        <form method="POST" action="{% url 'app:send_verification_email' %}" style="margin-top: 10px;">
+            {% csrf_token %}
+            <button type="submit"
+                style="background-color: #7c3aed; color: white; padding: 10px 20px; border: none; font-size: 14px; font-weight: 500; border-radius: 6px; cursor: pointer; transition: background 0.2s ease; margin-top: 10px;">
+                Emailni tasdiqlash
+            </button>
+        </form>
+        {% else %}
+        <span style="font-weight: bold; margin-top: 10px; font-size: 14px; color: #4ade80;">Tasdiqlangan</span>
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock %}
